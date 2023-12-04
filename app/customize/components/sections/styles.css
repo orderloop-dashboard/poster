@@ -1,0 +1,10 @@
+div#font-picker {
+    max-width: 173px !important;
+    border-radius: 12px !important;
+}
+
+button.dropdown-button {
+    max-width: 173px !important;
+    border-radius: 12px !important;
+    max-height: 29px !important;
+}
