@@ -1,6 +1,5 @@
 "use client";
 
-import FontPicker from "font-picker-react";
 import React, { useState } from "react";
 import "./styles.css";
 import LeftIcon from "../../../../assets/text-align-left-icon.svg";
@@ -170,11 +169,11 @@ export default function TextSection(props) {
 
             <div className="flex flex-row my-2">
                 <div className="w-1/2">
-                    <FontPicker
+                    {/* <FontPicker
                         apiKey="AIzaSyAq1H72SVivt8f71tZZu_Rd-syDiHjgKak"
                         activeFontFamily={activeFontFamily}
                         onChange={(nextFont) => handleChangeFontFamily(nextFont.family)}
-                    />
+                    /> */}
                 </div>
             </div>
 
