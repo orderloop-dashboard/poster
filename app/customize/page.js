@@ -37,7 +37,8 @@ const Page = () => {
                     {openSection === "text" && <TextSection setTextData={setTextData} edittingTextId={edittingTextId} textData={textData} />}
                 </div>
             )}
-            ]<Footer toggleSection={toggleSection} openSection={openSection} />
+
+            <Footer toggleSection={toggleSection} openSection={openSection} />
         </>
     );
 };
