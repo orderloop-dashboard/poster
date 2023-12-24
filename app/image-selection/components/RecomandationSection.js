@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import image from "@/assets/demo-poster-header.jpg";
 import { useWindowSize } from "@uidotdev/usehooks";
+import Link from "next/link";
 
 export default function RecomandationSection() {
     const images = [
@@ -39,12 +40,12 @@ export default function RecomandationSection() {
 
     return (
         <>
-            <div className="overflow-y-auto" style={{ height: screenHeight - 302 }}>
+            <div className="overflow-y-auto" style={{ height: screenHeight - 318 }}>
                 <div className="grid grid-cols-3 gap-3 p-3">
                     {images.map((image, index) => (
-                        <div key={index} className="">
+                        <Link key={index} href={`/image-selection/${index}`}>
                             <Image src={image} alt={`Image ${index + 1}`} className="w-full h-auto rounded-xl" />
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

@@ -157,11 +157,11 @@ export default function TextSection(props) {
                 placeholder="Type here..."
             />
 
-            <div className="text-neutral-300">Font size</div>
+            <div className="text-neutral-400">Font size</div>
 
             <input type="range" min="12" max="36" step="1" value={textData[edittingTextId].fontSize} onChange={(e) => handleSliderChange(e.target.value)} className="w-full" />
 
-            <div className="overflow-auto flex flex-row w-screen">
+            <div className="overflow-auto flex flex-row w-screen no-scrollbar">
                 {colorCode.map((el, index) => (
                     <div className="w-8 h-8 rounded-full flex-none mx-2" style={{ backgroundColor: el }} key={index} onClick={() => handleClickColor(el)} />
                 ))}
@@ -177,55 +177,25 @@ export default function TextSection(props) {
                 </div>
             </div>
 
-            <div className="overflow-auto flex flex-row w-screen">
+            <div className="overflow-auto flex flex-row w-screen no-scrollbar">
                 <FontStyleButton label="B" handleClick={() => handleStyle("font-bold")} isActive={activeButton.includes("font-bold")} styles="font-bold" />
                 <FontStyleButton label="I" handleClick={() => handleStyle("italic")} isActive={activeButton.includes("italic")} styles="italic" />
                 <FontStyleButton label="U" handleClick={() => handleStyle("underline")} isActive={activeButton.includes("underline")} styles="underline" />
-                <FontStyleButton label={<LeftIcon width="20" />} handleClick={() => handleTextStyle("text-left")} isActive={activeButton.includes("text-left")} />
-                <FontStyleButton label={<MiddleIcon width="20" />} handleClick={() => handleTextStyle("text-center")} isActive={activeButton.includes("text-center")} />
-                <FontStyleButton label={<RightIcon width="20" />} handleClick={() => handleTextStyle("text-right")} isActive={activeButton.includes("text-right")} />
+                <FontStyleButton label={<LeftIcon width="20" className="ml-3" />} handleClick={() => handleTextStyle("text-left")} isActive={activeButton.includes("text-left")} />
+                <FontStyleButton
+                    label={<MiddleIcon width="20" className="ml-3" />}
+                    handleClick={() => handleTextStyle("text-center")}
+                    isActive={activeButton.includes("text-center")}
+                />
+                <FontStyleButton
+                    label={<RightIcon width="20" className="ml-3" />}
+                    handleClick={() => handleTextStyle("text-right")}
+                    isActive={activeButton.includes("text-right")}
+                />
                 <FontStyleButton label="AA" handleClick={() => handleFontCase("uppercase")} isActive={activeButton.includes("uppercase")} />
                 <FontStyleButton label="aa" handleClick={() => handleFontCase("lowercase")} isActive={activeButton.includes("lowercase")} />
                 <FontStyleButton label="Aa" handleClick={() => handleFontCase("capitalize")} isActive={activeButton.includes("capitalize")} />
             </div>
-
-            {/* <button
-                className={`p-2 border rounded-xl font-bold ${activeButton.includes("font-bold") ? "bg-neutral-500" : "bg-neutral-200"}`}
-                onClick={() => handleStyle("font-bold")}
-            >
-                B
-            </button>
-            <button className={`p-2 border rounded-xl mx-2 italic ${activeButton.includes("italic") ? "bg-neutral-500" : "bg-neutral-200"}`} onClick={() => handleStyle("italic")}>
-                I
-            </button>
-            <button
-                className={`p-2 border rounded-xl underline ${activeButton.includes("underline") ? "bg-neutral-500" : "bg-neutral-200"}`}
-                onClick={() => handleStyle("underline")}
-            >
-                U
-            </button>
-
-            <button className="py-2 pl-4 pr-2 border bg-neutral-200 rounded-xl" onClick={() => handleTextStyle("text-left")}>
-                <LeftIcon width="20" />
-            </button>
-
-            <button className="py-2 pl-4 pr-2 border bg-neutral-200 rounded-xl mx-2" onClick={() => handleTextStyle("text-center")}>
-                <MiddleIcon width="20" />
-            </button>
-
-            <button className="py-2 pl-4 pr-2 border bg-neutral-200 rounded-xl" onClick={() => handleTextStyle("text-right")}>
-                <RightIcon width="20" />
-            </button>
-
-            <button className="p-2 border bg-neutral-200 rounded-xl" onClick={() => handleFontCase("uppercase")}>
-                AA
-            </button>
-            <button className="p-2 border bg-neutral-200 rounded-xl mx-2" onClick={() => handleFontCase("lowercase")}>
-                Aa
-            </button>
-            <button className="p-2 border bg-neutral-200 rounded-xl" onClick={() => handleFontCase("capitalize")}>
-                aa
-            </button> */}
         </>
     );
 }

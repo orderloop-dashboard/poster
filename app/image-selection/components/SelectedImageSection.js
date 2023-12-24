@@ -1,66 +1,55 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Slider from "react-slick";
 import { Frame1, Frame2, Frame3, Frame4, Frame5 } from "./Frames";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import MusicIcon from "@/assets/music-icon.svg";
+import EditIcon from "@/assets/edit-icon.svg";
+import Link from "next/link";
 
-const SwipeableFrames = () => {
+export default function SelectedImageSection(props) {
+    const { setShowMusicSelectionSection } = props;
+
     const frames = [Frame1, Frame2, Frame3, Frame4, Frame5];
 
-    const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
-
-    const [touchStart, setTouchStart] = useState(null);
-
-    const [touchEnd, setTouchEnd] = useState(null);
-
-    const handleSwipe = (direction) => {
-        const newIndex =
-            direction === "right" ? (currentFrameIndex === 0 ? frames.length - 1 : currentFrameIndex - 1) : currentFrameIndex === frames.length - 1 ? 0 : currentFrameIndex + 1;
-
-        setCurrentFrameIndex(newIndex);
-    };
-
-    const onTouchStart = (e) => {
-        setTouchEnd(null);
-        setTouchStart(e.targetTouches[0].clientX);
-    };
-
-    const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
-    const minSwipeDistance = 50;
-    const onTouchEnd = () => {
-        if (!touchStart || !touchEnd) return;
-
-        const distance = touchStart - touchEnd;
-
-        const isLeftSwipe = distance > minSwipeDistance;
-        const isRightSwipe = distance < -minSwipeDistance;
-
-        if (isRightSwipe) {
-            setCurrentFrameIndex((prevState) => (prevState === 0 ? frames.length - 1 : prevState - 1));
-        }
-
-        if (isLeftSwipe) {
-            setCurrentFrameIndex((prevState) => (prevState === frames.length - 1 ? 0 : prevState + 1));
-        }
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        arrows: false,
     };
 
     return (
-        <div className="w-full flex justify-center">
-            <div
-                className="swipe-container relative h-[300px] w-[200px] bg-white overflow-hidden"
-                onTouchStart={(e) => onTouchStart(e)}
-                onTouchMove={(e) => onTouchMove(e)}
-                onTouchEnd={(e) => onTouchEnd(e, handleSwipe)}
-            >
-                <div className="swipe-frames flex h-full" style={{ transform: `translateX(${-currentFrameIndex * 200}px)`, transition: "transform 0.3s ease-in-out" }}>
-                    {frames.map((Frame, index) => (
-                        <React.Fragment key={index}>
-                            <Frame />
-                        </React.Fragment>
-                    ))}
+        <>
+            <div className="w-full flex justify-center mb-4">
+                <div className="relative h-[300px] w-[200px] bg-white">
+                    <Slider {...settings}>
+                        {frames.map((Frame, index) => (
+                            <React.Fragment key={index}>
+                                <Frame />
+                            </React.Fragment>
+                        ))}
+                    </Slider>
                 </div>
             </div>
-        </div>
-    );
-};
 
-export default SwipeableFrames;
+            <div className="flex flex-row items-center justify-end pr-4 mb-2">
+                <span className="mr-4 h-8 flex justify-center pt-1 w-8 rounded-full bg-white" onClick={() => setShowMusicSelectionSection(true)}>
+                    <MusicIcon height={20} width={20} />
+                </span>
+
+                <Link href={`/customize/1`}>
+                    <div className="flex flex-row justify-center h-8 rounded-xl bg-white pt-1 px-3">
+                        <EditIcon height={20} width={20} />
+                        <span className="ml-2">Edit</span>
+                    </div>
+                </Link>
+            </div>
+        </>
+    );
+}

@@ -1,14 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import Footer from "./components/Footer";
-import CancelIcon from "../../assets/cancel-icon.svg";
-import FrameSection from "./components/sections/FrameSection";
-import TextSection from "./components/sections/TextSection";
-import EditLayout from "./components/Layout/EditLayout";
+import CancelIcon from "@/assets/cancel-icon.svg";
+import EditLayout from "../components/Layout/EditLayout";
+import FrameSection from "../components/sections/FrameSection";
+import TextSection from "../components/sections/TextSection";
+import Footer from "../components/Footer";
 
-const Page = () => {
-    const [openSection, setOpenSection] = useState("text");
+const Page = ({ params }) => {
+    const { id } = params;
+
+    const [openSection, setOpenSection] = useState(null);
 
     const toggleSection = (section, id) => {
         setOpenSection(openSection === section ? null : section);
@@ -22,6 +24,7 @@ const Page = () => {
     return (
         <>
             <EditLayout toggleSection={toggleSection} textData={textData} />
+
             {openSection && (
                 <div className="h-[280px] bg-gradient-to-t from-slate-100 to-amber-100 bottom-[60px] w-full px-2 fixed rounded-t-xl">
                     <div className="flex flex-row items-center mt-2 ml-2 mb-5">
