@@ -7,7 +7,7 @@ import SearchIcon from "../../../assets/search.svg";
 
 export default function Header() {
     return (
-        <div className="px-4 sticky top-0 w-full">
+        <div className="px-4 sticky top-0 w-full bg-slate-300 z-50 pb-4">
             <div className="flex flex-row justify-between items-center mb-5">
                 <div className="flex flex-row items-center">
                     <span className="font-bold">RV solution</span>
@@ -20,7 +20,7 @@ export default function Header() {
             </div>
 
             <div className="relative h-12">
-                <input type="text" className="h-full rounded-xl absolute top-0 -z-10 w-full" />
+                <input type="text" className="h-full rounded-xl absolute top-0 pl-12 w-full" placeholder="Search Post" />
 
                 <span className="top-2.5 absolute left-2">
                     <SearchIcon height="20" className="" />

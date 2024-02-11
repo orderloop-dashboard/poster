@@ -5,11 +5,12 @@ import ThisMonthPoster from "./components/ThisMonthPoster";
 import SingleScrollingSection from "./components/SingleScrollingSection";
 import FestivalIcon from "@/assets/background-icon.svg";
 import image from "@/assets/demo-poster-header.jpg";
+import Link from "next/link";
 
 export default function Home() {
     return (
         <>
-            <div className="mt-2 w-full">
+            <div className="w-full">
                 <Header />
 
                 <TrendingBanners />

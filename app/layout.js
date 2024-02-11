@@ -1,6 +1,7 @@
 // import { Inter } from "next/font/google";
+import { usePathname } from "next/navigation";
 import "./globals.css";
-// import BottomNavbar from "@/components/BottomNavbar/BottomNavbar";
+import BottomNavbar from "@/components/BottomNavbar/BottomNavbar";
 
 export const metadata = {
     title: "Create Next App",
@@ -12,7 +13,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body className="bg-gradient-to-b from-red-100 to-orange-100">
                 {children}
-                {/* <BottomNavbar /> */}
+                <BottomNavbar />
             </body>
         </html>
     );

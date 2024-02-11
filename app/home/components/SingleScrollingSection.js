@@ -22,9 +22,9 @@ export default function SingleScrollingSection(props) {
                 </div>
             </div>
 
-            <div className="flex flex-row overflow-auto w-full no-scrollbar -ml-4 mb-2">
+            <div className="flex flex-row overflow-auto w-full no-scrollbar mb-2">
                 {imageData?.map((image, index) => (
-                    <Link href={`/image-selection/${index}`} key={index} className="mx-4 w-full">
+                    <Link href={`/image-selection/${index}`} key={index} className="first:-ml-3 mx-2 w-full">
                         <Image height="100%" key={index} src={image} alt={`Image ${index + 1}`} className="mx-4 h-[150px] min-w-[150px] rounded-xl" />
                     </Link>
                 ))}

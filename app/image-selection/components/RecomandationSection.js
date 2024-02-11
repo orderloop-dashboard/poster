@@ -40,7 +40,7 @@ export default function RecomandationSection() {
 
     return (
         <>
-            <div className="overflow-y-auto" style={{ height: screenHeight - 318 }}>
+            <div className="overflow-y-auto" style={{ height: screenHeight - 391 }}>
                 <div className="grid grid-cols-3 gap-3 p-3">
                     {images.map((image, index) => (
                         <Link key={index} href={`/image-selection/${index}`}>

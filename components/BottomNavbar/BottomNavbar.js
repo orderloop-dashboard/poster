@@ -7,9 +7,22 @@ import MenuIcon from "../../assets/menu.svg";
 import CustomizeIcon from "../../assets/CustomizeIcon.svg";
 import Link from "next/link";
 import { TrayItem } from "./TrayItem";
+import { usePathname } from "next/navigation";
 
 const BottomNav = () => {
+    const page = usePathname();
+
     const [activeTab, setActiveTab] = useState("Home");
+
+    console.log("page ==> ", page);
+
+    const path = page;
+    const wordsBeforeSecondSlash = path.split("/").slice(1, 3).join("/");
+    console.log(wordsBeforeSecondSlash);
+
+    if (page === "/" || page === "/choose-industry" || page === "/fill-details" || page.startsWith("/image-selection/")) {
+        return;
+    }
 
     const handleIconClick = (iconName) => {
         setActiveTab(iconName);

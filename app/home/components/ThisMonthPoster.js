@@ -45,9 +45,9 @@ export default function ThisMonthPoster() {
                 <span className="ml-4 font-bold">Festival Calender 2023</span>
             </div>
 
-            <div className="flex flex-row overflow-auto mt-3 mb-2 no-scrollbar" style={{ scrollbarColor: "transparent transparent" }}>
+            <div className="flex flex-row overflow-auto mt-3 mx-3 mb-2 no-scrollbar" style={{ scrollbarColor: "transparent transparent" }}>
                 {data.map((el, index) => (
-                    <div className="h-12 w-12 mx-4 bg-white rounded-lg flex-none cursor-pointer" key={index} onClick={() => scrollToImages(el.date)}>
+                    <div className="h-12 w-12 mx-2 bg-white rounded-lg flex-none cursor-pointer" key={index} onClick={() => scrollToImages(el.date)}>
                         <div className="flex items-center justify-center pt-2.5">{el.date}</div>
                     </div>
                 ))}
@@ -56,7 +56,7 @@ export default function ThisMonthPoster() {
             <div className="flex flex-row overflow-auto w-full no-scrollbar">
                 {data.map((el) =>
                     el.image.map((image, index) => (
-                        <Link href={`/image-selection/${index}`} key={index} ref={dateRefs[el.date]} className="flex flex-row items-center justify-center mx-4 w-full">
+                        <Link href={`/image-selection/${index}`} key={index} ref={dateRefs[el.date]} className="flex flex-row items-center justify-center mx-2 w-full">
                             <Image height="100%" key={index} src={image} alt={`Image ${index + 1}`} className="flex-none mx-4 h-[150px] min-w-[150px] rounded-xl" />
                         </Link>
                     ))
