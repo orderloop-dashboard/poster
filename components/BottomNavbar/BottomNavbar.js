@@ -14,11 +14,8 @@ const BottomNav = () => {
 
     const [activeTab, setActiveTab] = useState("Home");
 
-    console.log("page ==> ", page);
-
     const path = page;
     const wordsBeforeSecondSlash = path.split("/").slice(1, 3).join("/");
-    console.log(wordsBeforeSecondSlash);
 
     if (page === "/" || page === "/choose-industry" || page === "/fill-details" || page.startsWith("/image-selection/")) {
         return;

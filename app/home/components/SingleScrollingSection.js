@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import RightArrowIcon from "@/assets/chevron-right.svg";
 import Image from "next/image";
 import Link from "next/link";
+import SubCategorySection from "./SubCategorySection";
 
 export default function SingleScrollingSection(props) {
     const { icon, title, imageData } = props;
@@ -22,13 +25,20 @@ export default function SingleScrollingSection(props) {
                 </div>
             </div>
 
-            <div className="flex flex-row overflow-auto w-full no-scrollbar mb-2">
-                {imageData?.map((image, index) => (
-                    <Link href={`/image-selection/${index}`} key={index} className="first:-ml-3 mx-2 w-full">
-                        <Image height="100%" key={index} src={image} alt={`Image ${index + 1}`} className="mx-4 h-[150px] min-w-[150px] rounded-xl" />
-                    </Link>
-                ))}
-            </div>
+            {imageData.subcategory && imageData.subcategory.length > 0 ? (
+                <>
+                    <SubCategorySection data={imageData.subcategory} />
+                </>
+            ) : (
+                <div className="flex flex-row overflow-auto w-full no-scrollbar mb-2">
+                    {imageData.data &&
+                        imageData.data.map((image, index) => (
+                            <Link href={`/image-selection/${index}`} key={index} className="first:-ml-3 mx-2 w-full">
+                                <Image height={200} width={200} src={image.url} alt={`Image ${index + 1}`} className="mx-4 h-[150px] min-w-[150px] rounded-xl" />
+                            </Link>
+                        ))}
+                </div>
+            )}
         </>
     );
 }
