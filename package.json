@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "devx":"HOST=0.0.0.0 next dev"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",

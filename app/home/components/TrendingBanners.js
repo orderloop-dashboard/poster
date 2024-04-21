@@ -105,14 +105,15 @@ const Carousel = () => {
         autoplaySpeed: 3000,
         centerMode: true,
         centerPadding: "10%",
+        width: 500,
     };
 
     return (
-        <div className="mt-5">
+        <div className="mt-2">
             <Slider {...settings} className="slick-dots-custom">
                 {images.map((el, index) => (
-                    <Link href={`/image-selection/${index}`} key={index} className="flex justify-center px-4">
-                        <Image src={el} alt={`Slide ${index + 1}`} className="max-h-96 rounded-xl" />
+                    <Link href={`/image-selection/${index}`} key={index} className="flex justify-center px-1">
+                        <Image src={el} alt={`Slide ${index + 1}`} className="rounded-xl" />
                     </Link>
                 ))}
             </Slider>

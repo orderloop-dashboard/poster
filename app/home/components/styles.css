@@ -1,13 +1,13 @@
 /* Add this to your CSS */
 .slick-dots-custom li button:before {
-    color: #ff00ff;
+    color: #fff;
     width: 10px;
     height: 10px;
     font-size: 10px;
 }
 
 .slick-dots li.slick-active button:before {
-    color: aqua;
+    color: rgb(82, 87, 170);
 }
 
 .slick-dots,

@@ -6,9 +6,8 @@ import TrendingBanners from "./components/TrendingBanners";
 import ThisMonthPoster from "./components/ThisMonthPoster";
 import SingleScrollingSection from "./components/SingleScrollingSection";
 import FestivalIcon from "@/assets/background-icon.svg";
-import image from "@/assets/demo-poster-header.jpg";
-import Link from "next/link";
 import axios from "axios";
+import TimeWatch from "@/assets/time-watch.svg";
 
 export default function Home() {
     const [data, setData] = useState([]);
@@ -16,8 +15,6 @@ export default function Home() {
     useEffect(() => {
         fetchData();
     }, []);
-
-    console.log("data ==> ", data);
 
     const fetchData = async () => {
         try {
@@ -30,13 +27,15 @@ export default function Home() {
 
     return (
         <>
-            <div className="w-full">
+            <div className="w-full mb-[80px]">
                 <Header />
+
                 <TrendingBanners />
+
                 <ThisMonthPoster />
 
                 {data.map((item) => (
-                    <SingleScrollingSection key={item.category} title={item.category} icon={<FestivalIcon />} imageData={item} />
+                    <SingleScrollingSection key={item.category} title={item.category} icon={<TimeWatch stroke={2} height={16} width={16} />} imageData={item} />
                 ))}
             </div>
         </>
