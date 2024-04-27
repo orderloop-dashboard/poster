@@ -4,7 +4,7 @@ import poster from "@/assets/demo-poster-header.jpg";
 import Image from "next/image";
 import Email from "@/assets/email.svg";
 import Call from "@/assets/call.svg";
-import Grid from "@/assets/Grid.svg";
+import Grid from "@/assets/grid.svg";
 import Lock from "@/assets/lock.svg";
 import PencilEdit from "@/assets/pencil-edit.svg";
 
