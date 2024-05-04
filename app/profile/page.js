@@ -9,7 +9,7 @@ import Grid from "@/assets/grid.svg";
 import Lock from "@/assets/lock.svg";
 import PencilEdit from "@/assets/pencil-edit.svg";
 import RightArrowIcon from "@/assets/chevron-right.svg";
-import frame1 from "@/assets/Themes/frame2.png";
+import frame1 from "@/assets/Themes/Frame1.png";
 
 export default function Page() {
     const [selectedColor, setSelectedColor] = useState("#ff0000"); // Default color is red
