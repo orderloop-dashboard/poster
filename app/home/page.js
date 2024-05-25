@@ -8,6 +8,9 @@ import SingleScrollingSection from "./components/SingleScrollingSection";
 import FestivalIcon from "@/assets/background-icon.svg";
 import axios from "axios";
 import TimeWatch from "@/assets/time-watch.svg";
+import ContentLoader from "react-content-loader";
+import { SingleLoader } from "@/components/Loader/Loader";
+import Loader from "./components/Loader";
 
 export default function Home() {
     const [data, setData] = useState([]);
@@ -34,9 +37,18 @@ export default function Home() {
 
                 <ThisMonthPoster />
 
-                {data.map((item) => (
-                    <SingleScrollingSection key={item.category} title={item.category} icon={<TimeWatch stroke={2} height={16} width={16} />} imageData={item} />
-                ))}
+                {!data.length ? (
+                    <>
+                        <Loader />
+                        <Loader />
+                        <Loader />
+                        <Loader />
+                        <Loader />
+                        <Loader />
+                    </>
+                ) : (
+                    data.map((item) => <SingleScrollingSection key={item.category} title={item.category} icon={<TimeWatch stroke={2} height={16} width={16} />} imageData={item} />)
+                )}
             </div>
         </>
     );

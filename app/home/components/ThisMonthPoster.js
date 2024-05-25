@@ -22,16 +22,16 @@ const data = [
     { date: "30 Apr", image: [image, image, image] },
 ];
 
-export default function ThisMonthPoster() {
-    const dateRefs = data.reduce((acc, el) => {
-        // eslint-disable-next-line
-        acc[el.date] = useRef(null);
-        return acc;
-    }, {});
+export default function Page() {
+    const containerRef = useRef(null);
 
-    const scrollToImages = (date, event) => {
-        if (dateRefs[date] && dateRefs[date].current) {
-            dateRefs[date].current.scrollIntoView({ behavior: "smooth" });
+    const scrollToImages = (date) => {
+        // Find the index of the date in the data array
+        const index = data.findIndex((el) => el.date === date);
+        // Scroll the container to the corresponding position
+        if (containerRef.current && index !== -1) {
+            const position = index * 100; // Assuming each item occupies 100px width
+            containerRef.current.scrollTo({ left: position, behavior: "smooth" });
         }
     };
 
@@ -41,8 +41,7 @@ export default function ThisMonthPoster() {
                 <div className="rounded-full h-7 w-7 bg-white flex items-center justify-center">
                     <CalenderIcon height={17} width={17} className="stroke-neutral-400" />
                 </div>
-
-                <span className="ml-2 font-bold text-neutral-600">Festival Calender 2023</span>
+                <span className="ml-2 font-bold text-neutral-600">Festival Calendar 2023</span>
             </div>
 
             <div className="flex flex-row overflow-auto mt-3 mx-2 mb-2 no-scrollbar" style={{ scrollbarColor: "transparent transparent" }}>
@@ -50,21 +49,30 @@ export default function ThisMonthPoster() {
                     <div
                         className="h-12 w-12 mx-1 bg-white rounded-lg flex-none cursor-pointer flex items-center justify-center text-center"
                         key={index}
-                        onClick={(event) => scrollToImages(el.date, event)}
+                        onClick={() => scrollToImages(el.date)}
                     >
                         <div className="flex items-center text-xs font-medium text-neutral-700 justify-center">{el.date}</div>
                     </div>
                 ))}
             </div>
 
-            <div className="flex flex-row overflow-auto w-full no-scrollbar mx-2">
-                {data.map((el) =>
-                    el.image.map((image, index) => (
-                        <Link href={`/image-selection/${index}`} key={index} ref={dateRefs[el.date]} className="flex flex-row items-center justify-center mx-1 w-full">
-                            <Image loading="lazy" height="100%" key={index} src={image} alt={`Image ${index + 1}`} className="flex-none mx-4 h-[104px] min-w-[78px] rounded-xl" />
-                        </Link>
-                    ))
-                )}
+            <div ref={containerRef} className="flex flex-row overflow-auto w-full no-scrollbar pl-2">
+                {data.map((el, dateIndex) => (
+                    <div key={dateIndex} className="flex flex-row">
+                        {el.image.map((image, index) => (
+                            <Link href={`/image-selection/${index}`} key={index} className="flex flex-row items-center justify-center mx-1 w-full">
+                                <Image
+                                    loading="lazy"
+                                    height="100%"
+                                    key={index}
+                                    src={image}
+                                    alt={`Image ${index + 1}`}
+                                    className="flex-none mx-4 h-[104px] min-w-[78px] rounded-xl"
+                                />
+                            </Link>
+                        ))}
+                    </div>
+                ))}
             </div>
         </>
     );

@@ -15,7 +15,7 @@ export default function Header() {
                         <span className="font-bold bg-blue-500 w-fit rounded-md px-1 py-0.5 text-white text-[10px]">Subscribe</span>
                     </div>
                     <div className="flex flex-row items-center -mt-1.5">
-                        <span className="font-medium text-neutral-700">Rushit info texh</span>
+                        <span className="font-medium text-neutral-700">Rushitx info texh</span>
                         <span className="-ml-2">
                             <NextIcon />
                         </span>

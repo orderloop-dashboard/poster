@@ -6,6 +6,10 @@ import RightIcon from "@/assets/chevron-down.svg";
 import Link from "next/link";
 
 export default function Page() {
+    const whatsappNumber = "7433804998";
+    const message = "Hello, I would like to connect with an expert.";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
     return (
         <>
             <div className="flex flex-row justify-between items-center px-2">
@@ -17,14 +21,16 @@ export default function Page() {
                     </div>
                 </Link>
 
-                <span className="font-normal text-[15px] tracking-widest text-blue-600">Edit</span>
+                <Link className="font-normal text-[15px] tracking-widest text-blue-600" href="/edit-profile">
+                    Edit
+                </Link>
             </div>
 
             <div className="px-4 pt-5 flex flex-row gap-4">
-                <div className="flex flex-col w-1/2 bg-white rounded-xl p-5 items-center">
+                <Link href="/my-business" className="flex flex-col w-1/2 bg-white rounded-xl p-5 items-center">
                     <CustomizeIcon />
                     <span className="font-normal text-[16px]">My Businesses</span>
-                </div>
+                </Link>
                 <div className="flex flex-col w-1/2 bg-white rounded-xl p-5 items-center">
                     <CustomizeIcon />
                     <span className="font-normal text-[16px]">Download</span>
@@ -56,14 +62,31 @@ export default function Page() {
                 </div>
             </div>
 
+            <span className="text-neutral-400 text-base px-5">Plans</span>
+
+            <div className="bg-white mx-5 px-5 py-4 mt-2 rounded-xl mb-7">
+                <div className="flex flow-row justify-between items-center">
+                    <Link href="/available-plan">
+                        <div className="flex flex-row gap-3 items-center cursor-pointer hover:bg-gray-100 p-2 rounded">
+                            <CopyIcon className="h-5 w-5 stroke-neutral-200" />
+                            <span className="text-base">Available Plans</span>
+                        </div>
+                    </Link>
+
+                    <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
+                </div>
+            </div>
+
             <span className="text-neutral-400 text-base px-5">Help & Support</span>
 
             <div className="bg-white mx-5 px-5 py-4 mt-2 rounded-xl mb-7">
-                <div className="flex flow-row justify-between">
-                    <div className="flex flow-row gap-3 items-center">
-                        <CopyIcon className="h-5 w-5 stroke-neutral-200" />
-                        <span className="text-base">Chat with an Export</span>
-                    </div>
+                <div className="flex flow-row justify-between items-center">
+                    <Link href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                        <div className="flex flex-row gap-3 items-center cursor-pointer hover:bg-gray-100 p-2 rounded">
+                            <CopyIcon className="h-5 w-5 stroke-neutral-200" />
+                            <span className="text-base">Chat with an Expert</span>
+                        </div>
+                    </Link>
 
                     <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
                 </div>
@@ -123,12 +146,16 @@ export default function Page() {
                 </div>
             </div>
 
+            <div className="flex justify-center items-center mb-2">
+                <span className="font-bold text-sm tracking-wide text-red-500">Logout</span>
+            </div>
+
             <div className="flex flex-col gap-1 justify-center w-full text-center">
                 <span className="text-[12px] text-neutral-400">App version 1.0.0</span>
                 <span className="text-[12px] text-neutral-400">Made with &#9829; in India</span>
             </div>
 
-            <div className="h-20"></div>
+            <div className="h-28"></div>
         </>
     );
 }

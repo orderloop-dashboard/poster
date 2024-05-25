@@ -1,14 +1,27 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import BackIcon from "@/assets/chevron-down.svg";
+import Input from "./Component/Input";
+import ImageUploader from "./Component/ImageUploader";
+import Link from "next/link";
 
 export default function Page() {
+    const today = new Date().toISOString().split("T")[0];
+
+    const [gender, setGender] = useState("male");
+
+    const handleGenderChange = (event) => {
+        setGender(event.target.value);
+    };
+
     return (
         <>
-            <div className="mt-3 mx-4 flex flex-row justify-between items-center">
+            <div className="py-3 mx-4 flex flex-row justify-between items-center sticky top-0 bg-[#efefef] z-10">
                 <div className="flex flex-row items-center gap-3">
-                    <div className="bg-neutral-50 rounded-full h-full w-fit p-2">
+                    <Link href="/menu" className="bg-neutral-50 rounded-full h-full w-fit p-2">
                         <BackIcon className="rotate-90 w-5" />
-                    </div>
+                    </Link>
 
                     <span className="font-medium text-sm tracking-wide">Edit Profile</span>
                 </div>
@@ -16,7 +29,59 @@ export default function Page() {
                 <span className="font-normal text-[15px] tracking-widest text-blue-600">Save</span>
             </div>
 
-            <div className="rounded-full bg-white h-24 w-24" />
+            <ImageUploader />
+
+            <span className="text-neutral-400 font-medium px-5">Personal Information</span>
+
+            <div className="px-5 mt-3">
+                <Input placeholder="Enter Name" label="Enter Name" />
+            </div>
+
+            <div className="px-5 mt-3 mb-6 w-full">
+                <label className="text-[14px] text-neutral-700 font-medium pb-2 tracking-wide" htmlFor="">
+                    Enter Birth Date
+                </label>
+                <div className="flex justify-center items-center w-full mt-1">
+                    <div className="relative w-full">
+                        <input id="date-input" type="date" max={today} placeholder="Select date" className="w-full p-4 bg-white rounded-md" />
+                    </div>
+                </div>
+            </div>
+
+            <span className="text-neutral-400 font-medium px-5">Gender</span>
+
+            <div className="flex flex-row gap-3 mt-1.5 mb-6 px-5">
+                <label className="flex flex-row items-center gap-1 text-neutral-600">
+                    <input type="radio" value="male" checked={gender === "male"} onChange={handleGenderChange} />
+                    Male
+                </label>
+                <label className="flex flex-row items-center gap-1 text-neutral-600">
+                    <input type="radio" value="female" checked={gender === "female"} onChange={handleGenderChange} />
+                    Female
+                </label>
+                <label className="flex flex-row items-center gap-1 text-neutral-600">
+                    <input type="radio" value="other" checked={gender === "other"} onChange={handleGenderChange} />
+                    Other
+                </label>
+            </div>
+
+            <span className="text-neutral-400 font-medium px-5">Contact Details</span>
+
+            <div className="px-5 mt-2">
+                <Input placeholder="Enter Email Address" label="Email Address" />
+            </div>
+
+            <div className="px-5 mt-2">
+                <Input disabled={true} value="1456789231" label="Mobile Number" />
+            </div>
+
+            <div className="px-5 mt-2">
+                <Input disabled={true} value="Rajkot, Gujarat, India" label="City" />
+            </div>
+
+            <div className="mx-5 mt-6 mb-10">
+                <button className="w-full font-bold text-white bg-blue-500 rounded-3xl py-3">Save</button>
+            </div>
         </>
     );
 }

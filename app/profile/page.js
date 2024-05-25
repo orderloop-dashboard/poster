@@ -10,6 +10,7 @@ import Lock from "@/assets/lock.svg";
 import PencilEdit from "@/assets/pencil-edit.svg";
 import RightArrowIcon from "@/assets/chevron-right.svg";
 import frame1 from "@/assets/Themes/Frame1.png";
+import Link from "next/link";
 
 export default function Page() {
     const [selectedColor, setSelectedColor] = useState("#ff0000"); // Default color is red
@@ -20,8 +21,8 @@ export default function Page() {
 
     return (
         <>
-            <div className="px-4 pt-5 bg-neutral-50">
-                <div className="flex flex-row justify-between w-full">
+            <div className="px-4 bg-neutral-50">
+                <div className="flex flex-row justify-between w-full sticky top-0 py-5 bg-white">
                     <span className="font-medium text-neutral-700">Business Profile</span>
                     <RedirectIcon />
                 </div>
@@ -45,7 +46,9 @@ export default function Page() {
                     <span className="text-neutral-600 font-normal text-[13px]">7485964163</span>
                 </div>
 
-                <button className="bg-neutral-200 text-neutral-800 py-1.5 px-2.5 rounded-xl font-medium text-[13px] my-3">Edit Business Profile</button>
+                <Link href="/edit-business-details">
+                    <button className="bg-neutral-200 text-neutral-800 py-1.5 px-2.5 rounded-xl font-medium text-[13px] my-3">Edit Business Profile</button>
+                </Link>
             </div>
 
             <div className="px-4 pt-8 flex flex-row justify-between w-full items-center">

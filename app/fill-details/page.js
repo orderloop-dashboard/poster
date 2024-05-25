@@ -71,9 +71,9 @@ export default function Page() {
                 </div>
             </section>
 
-            <div className="fixed bottom-0 text-center w-full left-0 rounded-t-xl">
+            <div className="text-center w-full left-0 rounded-xl mt-10">
                 <Link href="/home" onClick={() => onSubmit()}>
-                    <div className="mt-4 py-5 rounded-t-xl bg-blue-600 hover:bg-blue-700 px-4 text-white uppercase rounded text-xs tracking-wider w-full">Continue</div>
+                    <div className="mt-4 py-5 rounded-xl bg-blue-600 hover:bg-blue-700 px-4 text-white uppercase mx-5 text-xs tracking-wider">Continue</div>
                 </Link>
             </div>
         </>

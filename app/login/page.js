@@ -117,7 +117,7 @@ export default function Page() {
 
     return (
         <section className="h-screen flex flex-col md:flex-row justify-center items-center mx-5 md:mx-0">
-            <div className="md:w-1/3 max-w-sm mb-5">
+            <div className="md:w-1/3 max-w-sm mt-14 mb-20">
                 <Image src={loginPhoto} alt="Sample" width={200} />
             </div>
 
@@ -154,8 +154,18 @@ export default function Page() {
                                 Forgot Password?
                             </a>
                         </div>
+                    </>
+                )}
 
-                        <div className="mt-4 font-semibold text-sm text-slate-500 text-center w-full left-0 justify-center fixed bottom-20">
+                <div className="text-center w-full rounded-t-xl pt-14">
+                    <button className="mt-4 py-5 rounded-xl bg-blue-600 hover:bg-blue-700 px-4 text-white uppercase text-xs tracking-wider w-full" onClick={handleSubmit(onSubmit)}>
+                        {pageState === "login" ? "Login" : pageState === "getOtp" ? "Get OTP" : "Register"}
+                    </button>
+                </div>
+
+                {pageState === "login" && (
+                    <>
+                        <div className="mt-4 font-semibold text-sm text-slate-500 text-center w-full justify-center">
                             Don&apos;t have an account?
                             <button className="text-red-600 hover:underline hover:underline-offset-4 ml-2" onClick={() => setPageState("getOtp")}>
                                 Register
@@ -163,15 +173,6 @@ export default function Page() {
                         </div>
                     </>
                 )}
-
-                <div className="fixed bottom-0 text-center w-full left-0 rounded-t-xl">
-                    <button
-                        className="mt-4 py-5 rounded-t-xl bg-blue-600 hover:bg-blue-700 px-4 text-white uppercase rounded text-xs tracking-wider w-full"
-                        onClick={handleSubmit(onSubmit)}
-                    >
-                        {pageState === "login" ? "Login" : pageState === "getOtp" ? "Get OTP" : "Register"}
-                    </button>
-                </div>
             </section>
         </section>
     );
