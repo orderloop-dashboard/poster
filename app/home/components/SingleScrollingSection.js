@@ -5,9 +5,12 @@ import RightArrowIcon from "@/assets/chevron-right.svg";
 import Image from "next/image";
 import Link from "next/link";
 import SubCategorySection from "./SubCategorySection";
+import { useRouter } from "next/navigation";
 
 export default function SingleScrollingSection(props) {
     const { icon, title, imageData } = props;
+
+    const route = useRouter();
 
     return (
         <>
@@ -31,9 +34,17 @@ export default function SingleScrollingSection(props) {
                 <div className="flex flex-row overflow-auto w-full no-scrollbar mb-2 px-4">
                     {imageData.data &&
                         imageData.data.map((image, index) => (
-                            <Link href={`/image-selection/${index}`} key={index} className="first:-ml-4 mx-0.5 w-full">
-                                <Image height={200} width={200} src={image.url} alt={`Image ${index + 1}`} className="mx-4 h-[104px] min-w-[78px] rounded-xl" />
-                            </Link>
+                            <>
+                                <div
+                                    onClick={() => {
+                                        route.push(`/image-selection/${index}`, { image });
+                                    }}
+                                    key={index}
+                                    className="first:-ml-4 mx-0.5 w-full"
+                                >
+                                    <Image height={200} width={200} src={image.url} alt={`Image ${index + 1}`} className="mx-4 h-[104px] min-w-[78px] rounded-xl" />
+                                </div>
+                            </>
                         ))}
                 </div>
             )}

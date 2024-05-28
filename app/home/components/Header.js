@@ -25,13 +25,13 @@ export default function Header() {
                 <NotificationIcon height="16" width="16" />
             </div>
 
-            <div className="relative h-12 -mx-1">
+            {/* <div className="relative h-12 -mx-1">
                 <input type="text" className="h-full rounded-xl absolute top-0 pl-12 w-full" placeholder="Search categories or media" />
 
                 <span className="top-[13px] absolute left-2">
                     <SearchIcon height="20" className="" />
                 </span>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -2,15 +2,16 @@ import React from "react";
 import RightArrowIcon from "@/assets/chevron-right.svg";
 import SearchIcon from "@/assets/search.svg";
 import DownloadIcon from "@/assets/download-icon.svg";
+import Link from "next/link";
 
 export default function Navbar() {
     return (
         <>
             <div className="flex flex-row w-full justify-between items-center p-3">
                 <div className="flex flex-row items-center">
-                    <span className="rounded-full h-8 w-8 bg-white mr-2">
+                    <Link href="/home" className="rounded-full h-8 w-8 bg-white mr-2">
                         <RightArrowIcon className="rotate-180 -ml-1 -mt-1" />
-                    </span>
+                    </Link>
 
                     <span className="-mr-1.5">My Business</span>
                 </div>

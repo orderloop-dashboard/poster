@@ -1,3 +1,5 @@
+"use client";
+
 import { SingleLoader } from "@/components/Loader/Loader";
 import React from "react";
 

@@ -192,7 +192,7 @@ export default function ImageGallery({ data }) {
                             activeSubcategory === item.title ? "border-blue-400" : "border-neutral-200"
                         }`}
                     >
-                        {activeSubcategory === item.title && <Image src={CheckMark} height={12} width={12} />}
+                        {activeSubcategory === item.title && <Image alt="" src={CheckMark} height={12} width={12} />}
 
                         {item.title}
                     </button>

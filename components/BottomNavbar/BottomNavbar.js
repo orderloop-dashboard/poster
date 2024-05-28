@@ -24,6 +24,7 @@ const BottomNav = () => {
         page === "/my-business" ||
         page === "/edit-business-details" ||
         page === "/available-plan" ||
+        page === "/profile" ||
         page.startsWith("/edit-profile") ||
         page.startsWith("/add-business-details/") ||
         page.startsWith("/image-selection/")

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import RedirectIcon from "@/assets/redirect.svg";
 import poster from "@/assets/demo-poster-header.jpg";
 import Image from "next/image";
@@ -7,18 +7,10 @@ import Email from "@/assets/email.svg";
 import Call from "@/assets/call.svg";
 import Grid from "@/assets/grid.svg";
 import Lock from "@/assets/lock.svg";
-import PencilEdit from "@/assets/pencil-edit.svg";
 import RightArrowIcon from "@/assets/chevron-right.svg";
-import frame1 from "@/assets/Themes/Frame1.png";
 import Link from "next/link";
 
 export default function Page() {
-    const [selectedColor, setSelectedColor] = useState("#ff0000"); // Default color is red
-
-    const handleColorChange = (color) => {
-        setSelectedColor(color);
-    };
-
     return (
         <>
             <div className="px-4 bg-neutral-50">
@@ -77,70 +69,80 @@ export default function Page() {
                 </div> */}
             </div>
 
-            <Image src={frame1} height={240} style={{ filter: `saturate(0) sepia(100%) hue-rotate(${getHueRotation(selectedColor)}deg)` }} />
-
-            <div>
-                <ColorPicker onChange={handleColorChange} />
-            </div>
             <div className="h-[250px]"></div>
         </>
     );
 }
+// import React, { useState, useEffect, useRef } from "react";
 
-const ColorPicker = ({ onChange }) => {
-    const [selectedColor, setSelectedColor] = useState("#ff0000"); // Default color is red
+// const InfoComponent = () => {
+//     const [email, setEmail] = useState("");
+//     const [website, setWebsite] = useState("");
+//     const [address, setAddress] = useState("");
+//     const [mobileNumber, setMobileNumber] = useState("");
 
-    const handleChange = (e) => {
-        const color = e.target.value;
-        setSelectedColor(color);
-        onChange(color);
-    };
+//     const emailRef = useRef(null);
+//     const websiteRef = useRef(null);
+//     const mobileRef = useRef(null);
+//     const addressRef = useRef(null);
 
-    return <input type="color" value={selectedColor} onChange={handleChange} />;
-};
+//     useEffect(() => {
+//         const adjustFontSize = (ref) => {
+//             if (ref.current) {
+//                 ref.current.style.fontSize = "16px";
+//                 while (ref.current.scrollWidth > ref.current.clientWidth) {
+//                     const currentFontSize = parseFloat(window.getComputedStyle(ref.current).fontSize);
+//                     ref.current.style.fontSize = `${currentFontSize - 1}px`;
+//                     if (currentFontSize <= 10) break;
+//                 }
+//             }
+//         };
 
-const getHueRotation = (color) => {
-    const hexToRgb = (hex) => {
-        const bigint = parseInt(hex.substring(1), 16);
-        return {
-            r: (bigint >> 16) & 255,
-            g: (bigint >> 8) & 255,
-            b: bigint & 255,
-        };
-    };
+//         adjustFontSize(emailRef);
+//         adjustFontSize(websiteRef);
+//         adjustFontSize(mobileRef);
+//         adjustFontSize(addressRef);
+//     }, [email, website, mobileNumber, address]);
 
-    const rgbToHsl = (r, g, b) => {
-        (r /= 255), (g /= 255), (b /= 255);
+//     return (
+//         <div className="flex flex-col items-center">
+//             <div className="flex flex-col w-[80vw] mt-5 space-y-4">
+//                 <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="border p-2 rounded" />
+//                 <input type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)} className="border p-2 rounded" />
+//                 <input type="text" placeholder="Mobile Number" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} className="border p-2 rounded" />
+//                 <input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} className="border p-2 rounded" />
+//             </div>
 
-        const max = Math.max(r, g, b),
-            min = Math.min(r, g, b);
-        let h,
-            s,
-            l = (max + min) / 2;
+//             <div className="border border-neutral-300 h-[480px] w-[80vw] flex mx-auto mt-5 relative">
+//                 <div className="absolute bottom-8 left-0 right-0 flex justify-between">
+//                     <div
+//                         ref={emailRef}
+//                         className="bg-gray-500 h-8 w-[32%] rounded-r-2xl flex items-center justify-center text-white overflow-hidden text-ellipsis whitespace-nowrap"
+//                     >
+//                         {email || "This is email"}
+//                     </div>
+//                     <div
+//                         ref={websiteRef}
+//                         className="bg-gray-500 h-8 w-[32%] rounded-l-2xl flex items-center justify-center text-white overflow-hidden text-ellipsis whitespace-nowrap"
+//                     >
+//                         {website || "This is website"}
+//                     </div>
+//                 </div>
+//                 <div
+//                     ref={mobileRef}
+//                     className="absolute bottom-9 left-1/2 transform -translate-x-1/2 w-[30%] flex items-center justify-center text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap"
+//                 >
+//                     {mobileNumber || "mobile number"}
+//                 </div>
+//                 <div
+//                     ref={addressRef}
+//                     className="absolute bottom-0 left-0 right-0 w-full text-center p-2 text-gray-500 rounded-b-2xl overflow-hidden text-ellipsis whitespace-nowrap"
+//                 >
+//                     {address || "This is address"}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
 
-        if (max === min) {
-            h = s = 0; // achromatic
-        } else {
-            const d = max - min;
-            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-            switch (max) {
-                case r:
-                    h = (g - b) / d + (g < b ? 6 : 0);
-                    break;
-                case g:
-                    h = (b - r) / d + 2;
-                    break;
-                case b:
-                    h = (r - g) / d + 4;
-                    break;
-            }
-            h /= 6;
-        }
-
-        return [h * 360, s * 100, l * 100];
-    };
-
-    const { r, g, b } = hexToRgb(color);
-    const [hue] = rgbToHsl(r, g, b);
-    return hue;
-};
+// export default InfoComponent;

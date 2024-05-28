@@ -13,7 +13,7 @@ import Image from "next/image";
 import IsntACtivatedYetPopup from "./IsntACtivatedYetPopup/IsntACtivatedYetPopup ";
 
 export default function SelectedImageSection(props) {
-    const { setShowMusicSelectionSection } = props;
+    const { imageDetails } = props;
 
     const [showYetToComePopup, setShowYetToComePopup] = useState(false);
 
@@ -33,7 +33,8 @@ export default function SelectedImageSection(props) {
         <>
             <div className="w-full flex justify-center mb-4">
                 <div className="relative h-[300px] w-[200px] bg-white">
-                    <Image src={imag} alt="xx" className="absolute top-0" width={200} height={300} />
+                    {imageDetails?.url && <Image src={imageDetails?.url} alt="img" className="absolute top-0" width={200} height={300} />}
+
                     <Slider {...settings} className="">
                         {frames.map((Frame, index) => (
                             <React.Fragment key={index}>

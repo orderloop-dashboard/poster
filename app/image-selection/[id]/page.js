@@ -1,20 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SwipeableFrames from "../components/SelectedImageSection";
 import RecomandationSection from "../components/RecomandationSection";
 import Navbar from "../components/Navbar.js";
 import MusicSelectionSection from "../components/MusicSelectionSection";
+import { useParams, useRouter } from "next/navigation";
 
-export default function Page() {
+export default function Page(props) {
     const [showMusicSelectionSection, setShowMusicSelectionSection] = useState(false);
+
+    const [imageDetails, setImageDetails] = useState({});
 
     return (
         <>
             {!showMusicSelectionSection && (
                 <>
                     <Navbar />
-                    <SwipeableFrames setShowMusicSelectionSection={setShowMusicSelectionSection} />
+                    <SwipeableFrames imageDetails={imageDetails} />
                     <RecomandationSection />
                 </>
             )}
