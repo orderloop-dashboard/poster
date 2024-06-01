@@ -1,28 +1,34 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import SwipeableFrames from "../components/SelectedImageSection";
-import RecomandationSection from "../components/RecomandationSection";
+import React, { useRef, useState } from "react";
+import SelectedImageSection from "../components/SelectedImageSection";
+import RecommendationSection from "../components/RecommendationSection";
 import Navbar from "../components/Navbar.js";
-import MusicSelectionSection from "../components/MusicSelectionSection";
-import { useParams, useRouter } from "next/navigation";
+import { useImageData } from "@/context/ImageDataContext";
+import { toPng } from "html-to-image";
 
-export default function Page(props) {
-    const [showMusicSelectionSection, setShowMusicSelectionSection] = useState(false);
+export default function Page() {
+    const { imageData } = useImageData();
 
-    const [imageDetails, setImageDetails] = useState({});
+    const sectionRef = useRef();
+
+    const handleClickDownload = async () => {
+        if (sectionRef.current) {
+            const dataUrl = await toPng(sectionRef.current, { includeQueryParams: true, canvasHeight: 1080, canvasWidth: 1080 });
+            const link = document.createElement("a");
+            link.href = dataUrl;
+            link.download = "image-with-frame.png";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
 
     return (
         <>
-            {!showMusicSelectionSection && (
-                <>
-                    <Navbar />
-                    <SwipeableFrames imageDetails={imageDetails} />
-                    <RecomandationSection />
-                </>
-            )}
-
-            {showMusicSelectionSection && <MusicSelectionSection handleClickClose={() => setShowMusicSelectionSection(false)} />}
+            <Navbar handleClickDownload={handleClickDownload} />
+            <SelectedImageSection imageDetails={imageData?.selectedImage} sectionRef={sectionRef} />
+            <RecommendationSection imageDetails={imageData} />
         </>
     );
 }

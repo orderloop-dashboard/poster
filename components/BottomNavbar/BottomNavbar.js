@@ -1,21 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import HomeIcon from "../../assets/home-icon.svg";
 import ProfileIcon from "../../assets/profile.svg";
 import MenuIcon from "../../assets/menu.svg";
-import CustomizeIcon from "../../assets/CustomizeIcon.svg";
-import Link from "next/link";
 import { TrayItem } from "./TrayItem";
 import { usePathname } from "next/navigation";
+
+import HomeIcon from "@/assets/home.svg";
+import GalleryIcon from "@/assets/gallery-edit.svg";
 
 const BottomNav = () => {
     const page = usePathname();
 
     const [activeTab, setActiveTab] = useState("Home");
-
-    const path = page;
-    const wordsBeforeSecondSlash = path.split("/").slice(1, 3).join("/");
 
     if (
         page === "/" ||
@@ -24,7 +21,6 @@ const BottomNav = () => {
         page === "/my-business" ||
         page === "/edit-business-details" ||
         page === "/available-plan" ||
-        page === "/profile" ||
         page.startsWith("/edit-profile") ||
         page.startsWith("/add-business-details/") ||
         page.startsWith("/image-selection/")
@@ -41,7 +37,7 @@ const BottomNav = () => {
             <TrayItem
                 link="home"
                 label="home"
-                icon={<HomeIcon fill="#000" stroke={activeTab === "home" ? "#414042" : "#BCBEC0"} height={24} width={24} />}
+                icon={<HomeIcon stroke={activeTab === "home" ? "#FFFFFF" : "#000000"} fill={activeTab !== "home" ? "#FFFFFF" : "#000000"} height={24} width={24} />}
                 isActive={activeTab === "home"}
                 handleIconClick={handleIconClick}
             />
@@ -49,7 +45,7 @@ const BottomNav = () => {
             <TrayItem
                 link="customize/1"
                 label="Custom"
-                icon={<CustomizeIcon stroke={activeTab === "Custom" ? "#414042" : "#BCBEC0"} height={24} width={24} />}
+                icon={<GalleryIcon stroke={activeTab === "Custom" ? "#FFFFFF" : "#000000"} fill={activeTab !== "Custom" ? "#FFFFFF" : "#000000"} height={24} width={24} />}
                 isActive={activeTab === "Custom"}
                 handleIconClick={handleIconClick}
             />

@@ -1,7 +1,6 @@
-// import { Inter } from "next/font/google";
-import { usePathname } from "next/navigation";
 import "./globals.css";
 import BottomNavbar from "@/components/BottomNavbar/BottomNavbar";
+import { ImageDataProvider } from "@/context/ImageDataContext";
 
 export const metadata = {
     title: "Create Next App",
@@ -10,11 +9,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-            <body className="bg-[#efefef]">
-                {children}
-                <BottomNavbar />
-            </body>
-        </html>
+        <ImageDataProvider>
+            <html lang="en">
+                <head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+                </head>
+
+                <body className="bg-[#efefef]">
+                    {children}
+
+                    <BottomNavbar />
+                </body>
+            </html>
+        </ImageDataProvider>
     );
 }

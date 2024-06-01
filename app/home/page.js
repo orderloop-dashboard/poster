@@ -5,11 +5,8 @@ import Header from "./components/Header";
 import TrendingBanners from "./components/TrendingBanners";
 import ThisMonthPoster from "./components/ThisMonthPoster";
 import SingleScrollingSection from "./components/SingleScrollingSection";
-import FestivalIcon from "@/assets/background-icon.svg";
 import axios from "axios";
 import TimeWatch from "@/assets/time-watch.svg";
-import ContentLoader from "react-content-loader";
-import { SingleLoader } from "@/components/Loader/Loader";
 import Loader from "./components/Loader";
 
 export default function Home() {

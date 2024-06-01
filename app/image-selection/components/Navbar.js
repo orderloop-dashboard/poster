@@ -4,7 +4,9 @@ import SearchIcon from "@/assets/search.svg";
 import DownloadIcon from "@/assets/download-icon.svg";
 import Link from "next/link";
 
-export default function Navbar() {
+export default function Navbar(props) {
+    const { handleClickDownload } = props;
+
     return (
         <>
             <div className="flex flex-row w-full justify-between items-center p-3">
@@ -21,7 +23,7 @@ export default function Navbar() {
                         <SearchIcon height={20} width={20} />
                     </span>
 
-                    <span>
+                    <span onClick={handleClickDownload}>
                         <DownloadIcon height={20} width={20} />
                     </span>
                 </div>

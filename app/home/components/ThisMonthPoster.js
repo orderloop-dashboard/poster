@@ -53,7 +53,7 @@ export default function Page() {
         <>
             <div className="flex flex-row items-center mt-8 mx-4">
                 <div className="rounded-full h-7 w-7 bg-white flex items-center justify-center">
-                    <CalenderIcon height={17} width={17} className="stroke-neutral-400" />
+                    <CalenderIcon height={14} width={14} className="stroke-neutral-400" />
                 </div>
                 <span className="ml-2 font-bold text-neutral-600">Festival Calendar 2023</span>
             </div>

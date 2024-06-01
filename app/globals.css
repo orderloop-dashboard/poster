@@ -11,6 +11,38 @@ body {
     font-weight: 400;
 }
 
+/* Add this to your global CSS */
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Remove focus outlines */
+*:focus {
+    outline: none !important;
+}
+
+/* Optional: Provide a visual indicator for focus (accessibility consideration) */
+*:focus-visible {
+    outline: none; /* Customize this to fit your design */
+}
+
+/* Disable click effects */
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Additional styles for click events */
+a:active,
+button:active {
+    transform: scale(0.98); /* Example effect: slightly scale down the element */
+}
+
 /* remove arrows in number filed */
 
 .remove-arrow::-webkit-inner-spin-button,
