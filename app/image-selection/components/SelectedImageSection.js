@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import { Frame1, Frame2, Frame3, Frame4, Frame5 } from "./Frames";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "next/image";
 
 export default function SelectedImageSection(props) {
     const { imageDetails, sectionRef } = props;

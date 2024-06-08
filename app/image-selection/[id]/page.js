@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import SelectedImageSection from "../components/SelectedImageSection";
 import RecommendationSection from "../components/RecommendationSection";
 import Navbar from "../components/Navbar.js";

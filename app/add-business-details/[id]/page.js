@@ -40,7 +40,7 @@ export default function Page() {
                 </div>
 
                 <Link href="/">
-                    <button className="py-5 rounded-xl bg-blue-600 hover:bg-blue-700 px-4 text-white uppercase text-xs tracking-wider w-full mt-12">Continue</button>
+                    <button className="py-5 rounded-xl bg-blue-600 px-4 text-white uppercase text-xs tracking-wider w-full mt-12">Continue</button>
                 </Link>
             </div>
         </>

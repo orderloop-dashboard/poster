@@ -16,10 +16,13 @@ const BottomNav = () => {
 
     if (
         page === "/" ||
+        page === "/sign-up" ||
+        page === "/login" ||
         page === "/choose-industry" ||
         page === "/fill-details" ||
         page === "/my-business" ||
         page === "/edit-business-details" ||
+        page === "/generate-ticket" ||
         page === "/available-plan" ||
         page.startsWith("/edit-profile") ||
         page.startsWith("/add-business-details/") ||

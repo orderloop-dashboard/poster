@@ -67,7 +67,7 @@ export default function Page() {
             <div className="bg-white mx-5 px-5 py-4 mt-2 rounded-xl mb-7">
                 <div className="flex flow-row justify-between items-center">
                     <Link href="/available-plan">
-                        <div className="flex flex-row gap-3 items-center cursor-pointer hover:bg-gray-100 p-2 rounded">
+                        <div className="flex flex-row gap-3 items-center cursor-pointer rounded">
                             <CopyIcon className="h-5 w-5 stroke-neutral-200" />
                             <span className="text-base">Available Plans</span>
                         </div>
@@ -79,10 +79,10 @@ export default function Page() {
 
             <span className="text-neutral-400 text-base px-5">Help & Support</span>
 
-            <div className="bg-white mx-5 px-5 py-4 mt-2 rounded-xl mb-7">
+            <div className="bg-white mx-5 px-4 py-4 mt-2 rounded-xl mb-7">
                 <div className="flex flow-row justify-between items-center">
                     <Link href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                        <div className="flex flex-row gap-3 items-center cursor-pointer hover:bg-gray-100 p-2 rounded">
+                        <div className="flex flex-row gap-3 items-center cursor-pointer rounded">
                             <CopyIcon className="h-5 w-5 stroke-neutral-200" />
                             <span className="text-base">Chat with an Expert</span>
                         </div>
@@ -92,10 +92,10 @@ export default function Page() {
                 </div>
 
                 <div className="flex flow-row justify-between py-8">
-                    <div className="flex flow-row gap-3 items-center">
+                    <Link href="/generate-ticket" className="flex flow-row gap-3 items-center">
                         <CopyIcon className="h-5 w-5 stroke-neutral-200" />
                         <span className="text-base">General Ticket</span>
-                    </div>
+                    </Link>
 
                     <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
                 </div>
@@ -113,14 +113,14 @@ export default function Page() {
             <span className="text-neutral-400 text-base px-5">About App</span>
 
             <div className="bg-white mx-5 px-5 py-4 mt-2 rounded-xl mb-16">
-                <div className="flex flow-row justify-between items-center">
+                <Link href="feedback" className="flex flow-row justify-between items-center">
                     <div className="flex flow-row gap-3 items-center">
                         <CopyIcon className="h-5 w-5 stroke-neutral-200" />
                         <span className="text-base">Feedback</span>
                     </div>
 
                     <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
-                </div>
+                </Link>
 
                 <div className="flex flow-row justify-between py-8 items-center">
                     <div className="flex flow-row gap-3 items-center">

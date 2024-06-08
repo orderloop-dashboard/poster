@@ -11,6 +11,7 @@
         "runIP": "npx next dev -H 192.168.43.147"
     },
     "dependencies": {
+        "@headlessui/react": "^2.0.4",
         "@reduxjs/toolkit": "^2.2.5",
         "@svgr/webpack": "^8.1.0",
         "@uidotdev/usehooks": "^2.4.1",

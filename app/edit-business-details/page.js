@@ -135,7 +135,7 @@ export default function Page() {
 
             <div className="mx-4">
                 <Link href="/profile" className="">
-                    <button className="py-5 mb-6 rounded-3xl bg-blue-600 hover:bg-blue-700 px-4 text-white uppercase text-xs tracking-wider w-full mt-12 transition duration-200 ease-in-out">
+                    <button className="py-5 mb-6 rounded-3xl bg-blue-600 px-4 text-white uppercase text-xs tracking-wider w-full mt-12 transition duration-200 ease-in-out">
                         Save
                     </button>
                 </Link>
