@@ -15,7 +15,6 @@ const BottomNav = () => {
     const [activeTab, setActiveTab] = useState("Home");
 
     if (
-        page === "/" ||
         page === "/sign-up" ||
         page === "/login" ||
         page === "/choose-industry" ||

@@ -8,9 +8,12 @@ import SingleScrollingSection from "./components/SingleScrollingSection";
 import axios from "axios";
 import TimeWatch from "@/assets/time-watch.svg";
 import Loader from "./components/Loader";
+import { useInitializeDeviceId } from "@/hooks/useInitializeDeviceId";
 
 export default function Home() {
     const [data, setData] = useState([]);
+
+    useInitializeDeviceId();
 
     useEffect(() => {
         fetchData();

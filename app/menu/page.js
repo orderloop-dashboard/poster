@@ -2,8 +2,18 @@ import React from "react";
 import ProfileIcon from "@/assets/profile.svg";
 import CustomizeIcon from "@/assets/CustomizeIcon.svg";
 import CopyIcon from "@/assets/copy.svg";
-import RightIcon from "@/assets/chevron-down.svg";
+import RightIcon from "@/assets/chevron-right.svg";
 import Link from "next/link";
+import ChatIcon from "@/assets/chat.svg";
+import TIcketIcon from "@/assets/ticket.svg";
+import FAQIcon from "@/assets/faqs.svg";
+import FeedbackIcon from "@/assets/feedback.svg";
+import PrivacyIcon from "@/assets/privacy.svg";
+import FollowIcon from "@/assets/follow.svg";
+import FacebookIcon from "@/assets/facebook.svg";
+import InstagramIcon from "@/assets/instagram.svg";
+import WhastappIcon from "@/assets/whatsapp.svg";
+import LinkedIcon from "@/assets/linkdln.svg";
 
 export default function Page() {
     const whatsappNumber = "7433804998";
@@ -16,13 +26,13 @@ export default function Page() {
                 <Link className="flex flex-row items-center gap-3 mt-3" href="/edit-profile">
                     <ProfileIcon className="h-14 w-14" />
                     <div className="flex flex-col">
-                        <span className="font-medium text-[16px] text-neutral-700">Rushit xx</span>
+                        <span className="font-medium text-[20px] text-neutral-700">Rushit xx</span>
                         <span className="font-medium text-[13px] text-neutral-400 tracking-wide">+91 8888 88 888</span>
                     </div>
                 </Link>
 
-                <Link className="font-normal text-[15px] tracking-widest text-blue-600" href="/edit-profile">
-                    Edit
+                <Link className="font-medium text-[16px] text-blue-600" href="/edit-profile">
+                    EDIT
                 </Link>
             </div>
 
@@ -73,7 +83,7 @@ export default function Page() {
                         </div>
                     </Link>
 
-                    <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
+                    <RightIcon className="w-7 stroke-neutral-300" />
                 </div>
             </div>
 
@@ -83,30 +93,30 @@ export default function Page() {
                 <div className="flex flow-row justify-between items-center">
                     <Link href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                         <div className="flex flex-row gap-3 items-center cursor-pointer rounded">
-                            <CopyIcon className="h-5 w-5 stroke-neutral-200" />
+                            <ChatIcon className="h-5 w-5 stroke-neutral-200" />
                             <span className="text-base">Chat with an Expert</span>
                         </div>
                     </Link>
 
-                    <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
+                    <RightIcon className="w-7 stroke-neutral-300" />
                 </div>
 
                 <div className="flex flow-row justify-between py-8">
                     <Link href="/generate-ticket" className="flex flow-row gap-3 items-center">
-                        <CopyIcon className="h-5 w-5 stroke-neutral-200" />
-                        <span className="text-base">General Ticket</span>
+                        <TIcketIcon className="h-5 w-5 stroke-neutral-200" />
+                        <span className="text-base">Generate Ticket</span>
                     </Link>
 
-                    <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
+                    <RightIcon className="w-7 stroke-neutral-300" />
                 </div>
 
                 <div className="flex flow-row justify-between">
                     <div className="flex flow-row gap-3 items-center">
-                        <CopyIcon className="h-5 w-5 stroke-neutral-200" />
+                        <FAQIcon className="h-5 w-5 stroke-neutral-200" />
                         <span className="text-base">FAQs</span>
                     </div>
 
-                    <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
+                    <RightIcon className="w-7 stroke-neutral-300" />
                 </div>
             </div>
 
@@ -115,33 +125,34 @@ export default function Page() {
             <div className="bg-white mx-5 px-5 py-4 mt-2 rounded-xl mb-16">
                 <Link href="feedback" className="flex flow-row justify-between items-center">
                     <div className="flex flow-row gap-3 items-center">
-                        <CopyIcon className="h-5 w-5 stroke-neutral-200" />
+                        <FeedbackIcon className="h-5 w-5 stroke-[2px] stroke-neutral-200" />
                         <span className="text-base">Feedback</span>
                     </div>
 
-                    <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
+                    <RightIcon className="w-7 stroke-neutral-300" />
                 </Link>
 
                 <div className="flex flow-row justify-between py-8 items-center">
                     <div className="flex flow-row gap-3 items-center">
-                        <CopyIcon className="h-5 w-5 stroke-neutral-200" />
+                        <PrivacyIcon className="h-5 w-5 stroke-[2px] stroke-neutral-200" />
                         <span className="text-base">Privacy Policy</span>
                     </div>
 
-                    <RightIcon className="-rotate-90 w-5 stroke-neutral-300" />
+                    <RightIcon className="w-7 stroke-neutral-300" />
                 </div>
 
                 <div className="flex flow-row justify-between items-center">
                     <div className="flex flow-row gap-3 items-center">
-                        <CopyIcon className="h-5 w-5 stroke-neutral-200" />
+                        <FollowIcon className="h-5 w-5 stroke-neutral-200" />
                         <span className="text-base">Follow us</span>
                     </div>
 
                     <div className="flex flex-row gap-3">
-                        <RightIcon className="-rotate-90 w-3 stroke-neutral-300" />
-                        <RightIcon className="-rotate-90 w-3 stroke-neutral-300" />
-                        <RightIcon className="-rotate-90 w-3 stroke-neutral-300" />
-                        <RightIcon className="-rotate-90 w-3 stroke-neutral-300" />
+                        <FacebookIcon className="fill-neutral-500" />
+                        {/* <TwitterIcon className='stroke-ne' /> */}
+                        <InstagramIcon className="stroke-neutral-500" />
+                        <WhastappIcon className="fill-neutral-500" />
+                        <LinkedIcon className="fill-neutral-500" />
                     </div>
                 </div>
             </div>

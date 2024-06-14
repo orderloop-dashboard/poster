@@ -29,11 +29,13 @@ export default function Page() {
                 </div>
 
                 <div className="flex flex-row items-center gap-2 mt-5">
-                    <Email className="h-4 w-4" />
+                    <Email className="h-4 w-4" fill="#000000" />
+                    {/* fill */}
                     <span className="text-neutral-600 font-normal text-[13px]">rushirpatoliya22@gmail.com</span>
                 </div>
 
                 <div className="flex flex-row items-center gap-2 mt-4">
+                    {/* fill */}
                     <Call className="h-4 w-4" />
                     <span className="text-neutral-600 font-normal text-[13px]">7485964163</span>
                 </div>

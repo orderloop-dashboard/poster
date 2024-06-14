@@ -1,9 +1,6 @@
-import LoginPage from "./login/page";
+import React from "react";
+import Home from "./home/page";
 
-export default function Home() {
-    return (
-        <>
-            <LoginPage />
-        </>
-    );
+export default function page() {
+    return <Home />;
 }

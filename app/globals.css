@@ -11,6 +11,15 @@ body {
     font-weight: 400;
 }
 
+/* styles/globals.css */
+.poppins-font {
+    font-family: "Poppins", sans-serif;
+}
+
+.arial-font {
+    font-family: Arial, sans-serif;
+}
+
 /* Add this to your global CSS */
 body {
     -webkit-touch-callout: none;

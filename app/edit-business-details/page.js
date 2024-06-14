@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import BackIcon from "@/assets/chevron-down.svg";
+import BackIcon from "@/assets/chevron-right.svg";
 import Link from "next/link";
 import Image from "next/image";
 import demo from "@/assets/demo-poster-header.jpg";
@@ -46,8 +46,8 @@ export default function Page() {
         <>
             <div className="p-4 flex flex-row justify-between items-center sticky top-0 bg-[#efefef] z-10">
                 <div className="flex flex-row items-center gap-4">
-                    <Link href="/profile" className="bg-neutral-50 rounded-full h-full w-fit p-2">
-                        <BackIcon className="rotate-90 w-5" />
+                    <Link href="/profile" className="bg-neutral-50 rounded-full h-full w-fit p-1">
+                        <BackIcon className="w-8 h-8 stroke-neutral-500 rotate-180" />
                     </Link>
 
                     {!isBusinessDetailsInView && <span className="text-neutral-800 font-medium pr-3 tracking-wide text-[16px]">Business Details</span>}
@@ -67,7 +67,7 @@ export default function Page() {
                 <Image src={demo} alt="" className="rounded-xl h-20 w-20" />
 
                 <div className="mt-3">
-                    <Input label="Business Name" icon={<NameIcon height={20} />} placeholder="Enter Business Name" />
+                    <Input label="Business Name" placeholder="Enter Business Name" />
                 </div>
 
                 <div className="mt-5">
@@ -81,7 +81,11 @@ export default function Page() {
 
             <div className="mx-4 mb-6 py-6 border-b border-t border-neutral-300">
                 <div className="flex items-center gap-2 cursor-pointer" onClick={toggleMoreBusinessDetails}>
-                    {showMoreBusinessDetails ? <BackIcon className="w-5 h-5" /> : <BackIcon className="w-5 h-5" />}
+                    {showMoreBusinessDetails ? (
+                        <BackIcon className="w-7 h-7 stroke-neutral-700 stroke-[1px] rotate-90" />
+                    ) : (
+                        <BackIcon className="w-7 h-7 stroke-neutral-700 stroke-[1px]" />
+                    )}
                     <span className="font-semibold text-neutral-700">More Business Details</span>
                 </div>
 

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SelectedImageSection from "../components/SelectedImageSection";
 import RecommendationSection from "../components/RecommendationSection";
 import Navbar from "../components/Navbar.js";
 import { useImageData } from "@/context/ImageDataContext";
 import { toPng } from "html-to-image";
+import MakeLoginPopup from "../components/MakeLoginPopup/MakeLoginPopup";
 
 export default function Page() {
     const { imageData } = useImageData();
@@ -24,11 +25,23 @@ export default function Page() {
         }
     };
 
+    const [showLoginPopup, setShowLoginPopup] = useState(true);
+
+    useEffect(() => {
+        const token = localStorage?.getItem("authToken");
+
+        setShowLoginPopup(!token);
+    }, []);
+
+    console.log("showLoginPopup ==> ", showLoginPopup);
+
     return (
         <>
             <Navbar handleClickDownload={handleClickDownload} />
             <SelectedImageSection imageDetails={imageData?.selectedImage} sectionRef={sectionRef} />
             <RecommendationSection imageDetails={imageData} />
+
+            {showLoginPopup && <MakeLoginPopup />}
         </>
     );
 }
