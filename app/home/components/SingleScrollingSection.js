@@ -14,6 +14,8 @@ import Gallery from "@/assets/gallery.svg";
 export default function SingleScrollingSection(props) {
     const { title, imageData } = props;
 
+    console.log("imageData ==> ", imageData);
+
     const { setImageData } = useImageData();
 
     const handleImageClick = (image) => {
@@ -48,12 +50,12 @@ export default function SingleScrollingSection(props) {
                     <span className="ml-2 font-bold">{title}</span>
                 </div>
 
-                <div className="flex flex-row items-center pr-2">
+                <Link href={`/all-image/${title}`} className="flex flex-row items-center pr-2">
                     <span className="mr-1 tracking-wider text-neutral-500 text-sm pr-1">View All</span>
                     <div className="rounded-full h-5 w-5 bg-white flex justify-center items-center">
                         <RightArrowIcon className="stroke-neutral-500" height={14} width={14} />
                     </div>
-                </div>
+                </Link>
             </div>
 
             {imageData.subcategory && imageData.subcategory.length > 0 ? (

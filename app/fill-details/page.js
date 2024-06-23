@@ -1,11 +1,36 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import SearchIcon from "@/assets/search.svg";
-import Link from "next/link";
+import { axiosInstance } from "@/APIHelper/axios";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Page() {
-    const onSubmit = () => {};
+    const searchParams = useSearchParams();
+
+    const industry = searchParams.get("industry");
+
+    const [details, setDetails] = useState({ email: "", name: "", mobileNumber2: "", email2: "", address: "", website: "", industry });
+
+    const { push } = useRouter();
+
+    const saveDetails = async () => {
+        try {
+            const response = await axiosInstance.post("/auth/user-registration", { details });
+
+            console.log("response ==> ", response);
+
+            if (response?.status == "200") {
+                push("/");
+            }
+        } catch (error) {
+            console.log("error ==> ", error);
+        }
+    };
+
+    const onSubmit = () => {
+        saveDetails();
+    };
 
     return (
         <>
@@ -16,7 +41,12 @@ export default function Page() {
 
             <section>
                 <div className="relative h-12 mx-6 mt-5">
-                    <input type="text" className="h-full rounded-xl absolute top-0 w-full pl-12" placeholder="Bussiness Name*" />
+                    <input
+                        type="text"
+                        className="h-full rounded-xl absolute top-0 w-full pl-12"
+                        placeholder="Business Name"
+                        onChange={(e) => setDetails((prevState) => ({ ...prevState, name: e.target.value }))}
+                    />
 
                     <span className="top-2.5 absolute left-2">
                         <SearchIcon height="20" className="" />
@@ -24,7 +54,12 @@ export default function Page() {
                 </div>
 
                 <div className="relative h-12 mx-6 mt-5">
-                    <input type="email" className="h-full rounded-xl absolute top-0 w-full pl-12" placeholder="Email ID" />
+                    <input
+                        type="email"
+                        className="h-full rounded-xl absolute top-0 w-full pl-12"
+                        placeholder="Email ID"
+                        onChange={(e) => setDetails((prevState) => ({ ...prevState, email: e.target.value }))}
+                    />
 
                     <span className="top-2.5 absolute left-2">
                         <SearchIcon height="20" className="" />
@@ -32,7 +67,25 @@ export default function Page() {
                 </div>
 
                 <div className="relative h-12 mx-6 mt-5">
-                    <input type="text" className="h-full rounded-xl absolute top-0 w-full pl-12" placeholder="Address" />
+                    <input
+                        type="email"
+                        className="h-full rounded-xl absolute top-0 w-full pl-12"
+                        placeholder="Email ID 2"
+                        onChange={(e) => setDetails((prevState) => ({ ...prevState, email2: e.target.value }))}
+                    />
+
+                    <span className="top-2.5 absolute left-2">
+                        <SearchIcon height="20" className="" />
+                    </span>
+                </div>
+
+                <div className="relative h-12 mx-6 mt-5">
+                    <input
+                        type="text"
+                        className="h-full rounded-xl absolute top-0 w-full pl-12"
+                        placeholder="Address"
+                        onChange={(e) => setDetails((prevState) => ({ ...prevState, address: e.target.value }))}
+                    />
 
                     <span className="top-2.5 absolute left-2">
                         <SearchIcon height="20" className="" />
@@ -55,6 +108,7 @@ export default function Page() {
                                 e.target.value = value.replace(/\D/g, "").slice(0, 10);
                             }
                         }}
+                        onChange={(e) => setDetails((prevState) => ({ ...prevState, mobileNumber2: e.target.value }))}
                     />
 
                     <span className="top-2.5 absolute left-2">
@@ -63,7 +117,12 @@ export default function Page() {
                 </div>
 
                 <div className="relative h-12 mx-6 mt-5">
-                    <input type="text" className="h-full rounded-xl absolute top-0 w-full pl-12" placeholder="Website" />
+                    <input
+                        type="text"
+                        className="h-full rounded-xl absolute top-0 w-full pl-12"
+                        placeholder="Website"
+                        onChange={(e) => setDetails((prevState) => ({ ...prevState, website: e.target.value }))}
+                    />
 
                     <span className="top-2.5 absolute left-2">
                         <SearchIcon height="20" className="" />
@@ -71,10 +130,12 @@ export default function Page() {
                 </div>
             </section>
 
-            <div className="text-center w-full left-0 rounded-xl mt-10">
-                <Link href="/home" onClick={() => onSubmit()}>
-                    <div className="mt-4 py-5 rounded-xl bg-blue-600 px-4 text-white uppercase mx-5 text-xs tracking-wider">Continue</div>
-                </Link>
+            <div className="text-center w-full rounded-xl mt-10">
+                <div className="w-full">
+                    <button className="w-full max-w-[80vh] mt-4 py-5 rounded-xl bg-blue-600 px-4 text-white uppercase mx-5 text-xs tracking-wider" onClick={() => onSubmit()}>
+                        Continue
+                    </button>
+                </div>
             </div>
         </>
     );

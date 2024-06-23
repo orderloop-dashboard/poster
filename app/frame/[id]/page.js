@@ -1,20 +1,20 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import SelectedImageSection from "../components/SelectedImageSection";
-import RecommendationSection from "../components/RecommendationSection";
-import Navbar from "../components/Navbar.js";
-import { useImageData } from "@/context/ImageDataContext";
+import { Frame1 } from "@/components/Frames/Frame";
+import React, { useRef } from "react";
+import BackIcon from "@/assets/chevron-right.svg";
+import Link from "next/link";
 import { toPng } from "html-to-image";
+import Button from "@/components/Button/Button";
 
 export default function Page() {
-    const { imageData } = useImageData();
-
     const sectionRef = useRef();
 
     const handleClickDownload = async () => {
         if (sectionRef.current) {
-            const dataUrl = await toPng(sectionRef.current, { includeQueryParams: true, canvasHeight: 1080, canvasWidth: 1080 });
+            const dataUrl = await toPng(sectionRef.current, { includeQueryParams: true, canvasHeight: 1080, canvasWidth: 1080, quality: 1 });
+
+            console.log("dataUrl ==> ", dataUrl);
 
             window.handleDownload(dataUrl);
 
@@ -30,21 +30,22 @@ export default function Page() {
         }
     };
 
-    const [showLoginPopup, setShowLoginPopup] = useState(true);
-
-    useEffect(() => {
-        const token = localStorage?.getItem("authToken");
-
-        setShowLoginPopup(!token);
-    }, []);
-
     return (
         <>
-            <Navbar handleClickDownload={handleClickDownload} />
-            <SelectedImageSection imageDetails={imageData?.selectedImage} sectionRef={sectionRef} />
-            <RecommendationSection imageDetails={imageData} />
+            <Button label={"bbhgg"} onClick={handleClickDownload} />
+            <div className="p-4 flex flex-row justify-between items-center sticky top-0 bg-[#efefef] z-10">
+                <div className="flex flex-row items-center gap-4">
+                    <Link href="/profile" className="bg-neutral-50 rounded-full h-full w-fit p-1">
+                        <BackIcon className="w-8 h-8 stroke-neutral-500 rotate-180" />
+                    </Link>
 
-            {/* {showLoginPopup && <MakeLoginPopup />} */}
+                    <span className="text-neutral-800 font-medium pr-3 tracking-wide text-[16px]">Edit Business profile</span>
+                </div>
+            </div>
+
+            <div className="p-4">
+                <Frame1 sectionRef={sectionRef} />
+            </div>
         </>
     );
 }

@@ -7,7 +7,7 @@ import React, { useState } from "react";
 export default function Page() {
     const [searchQuery, setSearchQuery] = useState("");
 
-    const sectors = [
+    const industries = [
         "Agriculture",
         "Awnings",
         "Animal Hospital",
@@ -129,7 +129,7 @@ export default function Page() {
         "None of the above",
     ];
 
-    const filteredSectors = sectors.filter((sector) => sector.toLowerCase().includes(searchQuery.toLowerCase()));
+    const filteredSectors = industries?.filter((sector) => sector.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return (
         <>
@@ -150,7 +150,13 @@ export default function Page() {
 
             <div className="mb-3">
                 {filteredSectors.map((el, index) => (
-                    <Link href="/fill-details" key={index}>
+                    <Link
+                        href={{
+                            pathname: "/fill-details",
+                            query: { industry: el },
+                        }}
+                        key={index}
+                    >
                         <div className="bg-neutral-100 rounded-xl mt-3 py-2 px-5 mx-6">{el}</div>
                     </Link>
                 ))}

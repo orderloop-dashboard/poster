@@ -23,9 +23,11 @@ const BottomNav = () => {
         page === "/edit-business-details" ||
         page === "/generate-ticket" ||
         page === "/available-plan" ||
+        page === "/profile" ||
         page.startsWith("/edit-profile") ||
         page.startsWith("/add-business-details/") ||
-        page.startsWith("/image-selection/")
+        page.startsWith("/image-selection/") ||
+        page.startsWith("/frame/")
     ) {
         return;
     }

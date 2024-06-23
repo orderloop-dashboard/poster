@@ -9,8 +9,12 @@ import Grid from "@/assets/grid.svg";
 import Lock from "@/assets/lock.svg";
 import RightArrowIcon from "@/assets/chevron-right.svg";
 import Link from "next/link";
+import { Frame1, Frame2, Frame3, Frame4 } from "@/components/Frames/Frame";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+    const { push } = useRouter();
+
     return (
         <>
             <div className="px-4 bg-neutral-50">
@@ -64,17 +68,25 @@ export default function Page() {
                         <RightArrowIcon className="stroke-neutral-500" />
                     </div>
                 </div>
-
-                {/* <div className="flex flex-row gap-2">
-                    <PencilEdit />
-                    <span>EDIT</span>
-                </div> */}
             </div>
 
-            <div className="h-[250px]"></div>
+            {/* <div className="flex flex-row overflow-auto w-[100vw]">
+                <Frame1 className="w-[30vw] h-[25vh]" />
+                <Frame2 className="w-[30vw] h-[25vh]" />
+                <Frame3 className="w-[30vw] h-[25vh]" />
+                <Frame4 className="w-[30vw] h-[25vh]" />
+            </div> */}
+
+            <div className="flex flex-row overflow-x-auto whitespace-nowrap w-[100vw] gap-4 mt-4 ml-4">
+                <Frame1 className="w-[30vw] h-[25vh] flex-shrink-0" onClick={() => push("/frame/1")} />
+                <Frame2 className="w-[30vw] h-[25vh] flex-shrink-0" onClick={() => push("/frame/2")} />
+                <Frame3 className="w-[30vw] h-[25vh] flex-shrink-0" onClick={() => push("/frame/3")} />
+                <Frame4 className="w-[30vw] h-[25vh] flex-shrink-0" onClick={() => push("/frame/4")} />
+            </div>
         </>
     );
 }
+
 // import React, { useState, useEffect, useRef } from "react";
 
 // const InfoComponent = () => {
@@ -108,14 +120,8 @@ export default function Page() {
 
 //     return (
 //         <div className="flex flex-col items-center">
-//             <div className="flex flex-col w-[80vw] mt-5 space-y-4">
-//                 <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="border p-2 rounded" />
-//                 <input type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)} className="border p-2 rounded" />
-//                 <input type="text" placeholder="Mobile Number" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} className="border p-2 rounded" />
-//                 <input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} className="border p-2 rounded" />
-//             </div>
 
-//             <div className="border border-neutral-300 h-[480px] w-[80vw] flex mx-auto mt-5 relative">
+//             <div className="border border-neutral-300 h-[350px] w-[250px] flex mx-auto mt-5 relative">
 //                 <div className="absolute bottom-8 left-0 right-0 flex justify-between">
 //                     <div
 //                         ref={emailRef}
@@ -142,6 +148,13 @@ export default function Page() {
 //                 >
 //                     {address || "This is address"}
 //                 </div>
+//             </div>
+
+//             <div className="flex flex-col w-[80vw] mt-5 space-y-4">
+//                 <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="border p-2 rounded" />
+//                 <input type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)} className="border p-2 rounded" />
+//                 <input type="text" placeholder="Mobile Number" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} className="border p-2 rounded" />
+//                 <input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} className="border p-2 rounded" />
 //             </div>
 //         </div>
 //     );

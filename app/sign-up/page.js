@@ -4,24 +4,29 @@ import { axiosInstance } from "@/APIHelper/axios";
 import Button from "@/components/Button/Button";
 import { Input } from "@/components/InputField/Input";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
 const SignUp = () => {
-    const [mobileNumber, setMobileNumber] = useState("12456");
-    const [otp, setOtp] = useState("");
+    const [mobileNumber, setMobileNumber] = useState(null);
+    const [otp, setOtp] = useState("1299");
     const [otpSent, setOtpSent] = useState(false);
-
-    const deviceId = useSelector((state) => state.user.deviceId);
 
     const handleSendOtp = async () => {
         setOtpSent(true);
     };
 
+    const { push } = useRouter();
+
     const handleSignUp = async () => {
         try {
-            const response = await axiosInstance.post("user/login", { otp, mobileNumber, deviceId });
-            console.log("response ==> ", response);
+            const response = await axiosInstance.post("/auth/sign-up-verify", { mobileNumber });
+
+            if (response?.data?.authToken) {
+                localStorage.setItem("authToken", response?.data?.authToken);
+
+                push("/choose-industry");
+            }
         } catch (error) {
             console.log(error);
         }

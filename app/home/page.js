@@ -5,10 +5,10 @@ import Header from "./components/Header";
 import TrendingBanners from "./components/TrendingBanners";
 import ThisMonthPoster from "./components/ThisMonthPoster";
 import SingleScrollingSection from "./components/SingleScrollingSection";
-import axios from "axios";
 import TimeWatch from "@/assets/time-watch.svg";
 import Loader from "./components/Loader";
 import { useInitializeDeviceId } from "@/hooks/useInitializeDeviceId";
+import { axiosInstance } from "@/APIHelper/axios";
 
 export default function Home() {
     const [data, setData] = useState([]);
@@ -21,7 +21,8 @@ export default function Home() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get("https://pinkly-node.vercel.app/api/category");
+            // api/posters
+            const response = await axiosInstance.get("/posters");
             setData(response.data);
         } catch (error) {
             console.error("Error fetching data:", error);

@@ -5,29 +5,34 @@ import { Input } from "@/components/InputField/Input";
 import Link from "next/link";
 import React, { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
     const [mobileNumber, setMobileNumber] = useState("");
     const [otp, setOtp] = useState("");
     const [otpSent, setOtpSent] = useState(false);
-    const [deviceId, setDeviceId] = useState("");
+
+    const { push } = useRouter();
 
     const handleSendOtp = async () => {
-        try {
-            const response = await axios.post("http://localhost:5000/api/user/send-otp", { mobileNumber });
-            setDeviceId(response.data.deviceId);
-            setOtpSent(true);
-        } catch (error) {
-            console.error("Error sending OTP:", error);
-        }
+        setOtpSent(true);
+        // try {
+        //     const response = await axios.post("http://localhost:5000/api/user/send-otp", { mobileNumber });
+        //     setDeviceId(response.data.deviceId);
+        // } catch (error) {
+        //     console.error("Error sending OTP:", error);
+        // }
     };
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post("http://localhost:5000/api/user/login", { mobileNumber, otp, deviceId });
-            const token = response.data.token;
-            localStorage.setItem("authToken", token);
-            console.log("Login successful:", token);
+            const response = await axios.post("http://localhost:5000/api/auth/login", { mobileNumber, otp });
+
+            const token = response?.data?.token;
+
+            localStorage?.setItem("authToken", token);
+
+            push("/home");
         } catch (error) {
             console.error("Error logging in:", error);
         }
@@ -52,34 +57,32 @@ const Login = () => {
 
                 <h2 className="text-2xl font-bold mb-8 text-center">Login</h2>
 
-                <form>
-                    {!otpSent ? (
+                {!otpSent ? (
+                    <div className="mb-4">
+                        <Input inputType="number" label="Mobile number" placeholder="Enter Mobile Number" value={mobileNumber} onChange={setMobileNumber} />
+                        <div className="flex items-center justify-center mt-4">
+                            <Button label="Send OTP" onClick={handleSendOtp} />
+                        </div>
+                    </div>
+                ) : (
+                    <>
                         <div className="mb-4">
                             <Input inputType="number" label="Mobile number" placeholder="Enter Mobile Number" value={mobileNumber} onChange={setMobileNumber} />
-                            <div className="flex items-center justify-center mt-4">
-                                <Button label="Send OTP" onClick={handleSendOtp} />
-                            </div>
                         </div>
-                    ) : (
-                        <>
-                            <div className="mb-4">
-                                <Input inputType="number" label="Mobile number" placeholder="Enter Mobile Number" value={mobileNumber} onChange={setMobileNumber} />
-                            </div>
-                            <div className="mb-4">
-                                <Input label="OTP" inputType="number" placeholder="Enter OTP" value={otp} onChange={setOtp} />
-                            </div>
-                            <div className="flex items-center justify-center">
-                                <Button label="Login" onClick={handleLogin} />
-                            </div>
-                        </>
-                    )}
+                        <div className="mb-4">
+                            <Input label="OTP" inputType="number" placeholder="Enter OTP" value={otp} onChange={setOtp} />
+                        </div>
+                        <div className="flex items-center justify-center">
+                            <Button label="Login" onClick={handleLogin} />
+                        </div>
+                    </>
+                )}
 
-                    <div className="mt-4 text-center">
-                        <a href="/sign-up" className="text-blue-500 hover:text-blue-800">
-                            {`Don't`} have an account? Sign Up
-                        </a>
-                    </div>
-                </form>
+                <div className="mt-4 text-center">
+                    <a href="/sign-up" className="text-blue-500 hover:text-blue-800">
+                        {`Don't`} have an account? Sign Up
+                    </a>
+                </div>
             </div>
         </div>
     );
