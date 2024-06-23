@@ -1,38 +1,18 @@
 "use client";
 
-import { Frame1 } from "@/components/Frames/Frame";
-import React, { useRef } from "react";
+import { Frame1, Frame2, Frame3, Frame4, Frame5, Frame6 } from "@/components/Frames/Frame";
+import React, { useRef, useState } from "react";
 import BackIcon from "@/assets/chevron-right.svg";
 import Link from "next/link";
-import { toPng } from "html-to-image";
-import Button from "@/components/Button/Button";
+import Input from "@/app/edit-profile/Component/Input";
 
 export default function Page() {
     const sectionRef = useRef();
 
-    const handleClickDownload = async () => {
-        if (sectionRef.current) {
-            const dataUrl = await toPng(sectionRef.current, { includeQueryParams: true, canvasHeight: 1080, canvasWidth: 1080, quality: 1 });
-
-            console.log("dataUrl ==> ", dataUrl);
-
-            window.handleDownload(dataUrl);
-
-            // const dataUrl =
-            //     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUYAAAVGCAYAAABSQWFhAAAAAXNSR0IArs4c6QAAIABJREFUeF7s3Qe0XFXZP+CXKqBBkCJIh1ANvUgvUixABCQU6RAgUgRpAQWlBBGRDiH0jkBoBgIovQUQEnqH0KVLlyLC/7/n++Z+Nzczd8+t3Lvvc9ZysZZ3z5mzn3fPTM7v7LPPJF9+dsdXYSNAgAABAgQIECBAgAABAgQIECBAgEAfEphEMNqHqq2rBAgQIECAAAECBAgQIECAAAECBAhUBASjBgIBAgQIECBAgAABAgQIECBAgAABAn1OQDDa50quwwQIECBAgAABAgQIECBAgAABAgQICEaNAQIECBAgQIAAAQIECBAgQIAAAQIE+pyAYLTPlVyHCRAgQIAAAQIECBAgQIAAAQIECBAQjBoDBAgQIECAAAECBAgQIECAAAECBAj0OQHBaJ8ruQ4TIECAAAECBAgQIECAAAECBAgQICAYNQYIECBAgAABAgQIECBAgAABAgQIEOhzAoLRPldyHSZAgAABAgQIECB";
-
-            // const link = document.createElement("a");
-            // link.href = dataUrl;
-            // link.download = "image-with-frame.png";
-            // document.body.appendChild(link);
-            // link.click();
-            // document.body.removeChild(link);
-        }
-    };
+    const [details, setDetails] = useState({ number: "", email: "", webSite: "", address: "" });
 
     return (
         <>
-            <Button label={"bbhgg"} onClick={handleClickDownload} />
             <div className="p-4 flex flex-row justify-between items-center sticky top-0 bg-[#efefef] z-10">
                 <div className="flex flex-row items-center gap-4">
                     <Link href="/profile" className="bg-neutral-50 rounded-full h-full w-fit p-1">
@@ -43,9 +23,20 @@ export default function Page() {
                 </div>
             </div>
 
-            <div className="p-4">
-                <Frame1 sectionRef={sectionRef} />
+            <div className="p-4 gap-2 space-y-2">
+                {/* name, email, webSite, address */}
+                <Frame1 sectionRef={sectionRef} number={details.number} email={details.email} webSite={details.webSite} address={details.address} />
+                {/* <Frame2 sectionRef={sectionRef} />
+                <Frame3 sectionRef={sectionRef} />
+                <Frame4 sectionRef={sectionRef} />
+                <Frame5 sectionRef={sectionRef} />
+                <Frame6 sectionRef={sectionRef} /> */}
             </div>
+
+            <Input label="number" handleChange={(e) => setDetails((prevState) => ({ ...prevState, number: e.target.value }))} placeholder="Name" value={details.number} />
+            <Input label="email" handleChange={(e) => setDetails((prevState) => ({ ...prevState, email: e.target.value }))} placeholder="email" value={details.email} />
+            <Input label="webSite" handleChange={(e) => setDetails((prevState) => ({ ...prevState, webSite: e.target.value }))} placeholder="webSite" value={details.webSite} />
+            <Input label="address" handleChange={(e) => setDetails((prevState) => ({ ...prevState, address: e.target.value }))} placeholder="address" value={details.address} />
         </>
     );
 }

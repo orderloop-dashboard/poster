@@ -24,16 +24,10 @@ export default function SelectedImageSection(props) {
     return (
         <>
             <div className="w-full flex justify-center mb-4">
-                <div className="relative h-[300px] w-[200px] bg-white" ref={sectionRef}>
+                <div className="relative h-[320px] w-[320px] bg-white" ref={sectionRef}>
                     {imageDetails?.url && <img alt="x" src={imageDetails?.url} className="absolute top-0" />}
 
-                    <Slider {...settings} className="">
-                        {frames.map((Frame, index) => (
-                            <React.Fragment key={index}>
-                                <Frame />
-                            </React.Fragment>
-                        ))}
-                    </Slider>
+                    <Frame1 />
                 </div>
             </div>
         </>

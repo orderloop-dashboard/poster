@@ -1,50 +1,45 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import SelectedImageSection from "../components/SelectedImageSection";
-import RecommendationSection from "../components/RecommendationSection";
-import Navbar from "../components/Navbar.js";
+import React, { useRef } from "react";
 import { useImageData } from "@/context/ImageDataContext";
-import { toPng } from "html-to-image";
+import html2canvas from "html2canvas";
+import Button from "@/components/Button/Button";
+import { Frame1 } from "@/components/Frames/Frame";
 
 export default function Page() {
     const { imageData } = useImageData();
-
     const sectionRef = useRef();
 
     const handleClickDownload = async () => {
         if (sectionRef.current) {
-            const dataUrl = await toPng(sectionRef.current, { includeQueryParams: true, canvasHeight: 1080, canvasWidth: 1080 });
+            const canvas = await html2canvas(sectionRef.current, {
+                scale: 5,
+                useCORS: true,
+            });
 
-            window.handleDownload(dataUrl);
+            const dataUrl = canvas.toDataURL("image/png");
 
-            // const dataUrl =
-            //     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUYAAAVGCAYAAABSQWFhAAAAAXNSR0IArs4c6QAAIABJREFUeF7s3Qe0XFXZP+CXKqBBkCJIh1ANvUgvUixABCQU6RAgUgRpAQWlBBGRDiH0jkBoBgIovQUQEnqH0KVLlyLC/7/n++Z+Nzczd8+t3Lvvc9ZysZZ3z5mzn3fPTM7v7LPPJF9+dsdXYSNAgAABAgQIECBAgAABAgQIECBAgEAfEphEMNqHqq2rBAgQIECAAAECBAgQIECAAAECBAhUBASjBgIBAgQIECBAgAABAgQIECBAgAABAn1OQDDa50quwwQIECBAgAABAgQIECBAgAABAgQICEaNAQIECBAgQIAAAQIECBAgQIAAAQIE+pyAYLTPlVyHCRAgQIAAAQIECBAgQIAAAQIECBAQjBoDBAgQIECAAAECBAgQIECAAAECBAj0OQHBaJ8ruQ4TIECAAAECBAgQIECAAAECBAgQICAYNQYIECBAgAABAgQIECBAgAABAgQIEOhzAoLRPldyHSZAgAABAgQIECB";
+            // window.handleDownload(dataUrl);
 
-            // const link = document.createElement("a");
-            // link.href = dataUrl;
-            // link.download = "image-with-frame.png";
-            // document.body.appendChild(link);
-            // link.click();
-            // document.body.removeChild(link);
+            const link = document.createElement("a");
+            link.href = dataUrl;
+            link.download = "image-with-frame.png";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     };
 
-    const [showLoginPopup, setShowLoginPopup] = useState(true);
-
-    useEffect(() => {
-        const token = localStorage?.getItem("authToken");
-
-        setShowLoginPopup(!token);
-    }, []);
-
     return (
         <>
-            <Navbar handleClickDownload={handleClickDownload} />
-            <SelectedImageSection imageDetails={imageData?.selectedImage} sectionRef={sectionRef} />
-            <RecommendationSection imageDetails={imageData} />
+            <Button label="Download" onClick={handleClickDownload} />
 
-            {/* {showLoginPopup && <MakeLoginPopup />} */}
+            <div className="w-full flex justify-center mb-4">
+                <div className="relative h-[320px] w-[320px] bg-white" ref={sectionRef}>
+                    {imageData?.selectedImage?.url && <img alt="x" src={imageData?.selectedImage?.url} className="absolute top-0" />}
+                    <Frame1 />
+                </div>
+            </div>
         </>
     );
 }

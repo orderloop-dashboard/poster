@@ -3,27 +3,213 @@ import React from "react";
 import CallIcon from "@/assets/call.svg";
 import WebIcon from "@/assets/web.svg";
 
+const LocationIcon = ({ fill = "#000000", className, height = 24, width = 24 }) => (
+    <svg className={className} fill={fill} height={height} width={width} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <title>location-filled</title>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="location-outline" fill={fill} transform="translate(106.666667, 42.666667)">
+                    <path
+                        d="M149.333333,7.10542736e-15 C231.807856,7.10542736e-15 298.666667,66.8588107 298.666667,149.333333 C298.666667,176.537017 291.413333,202.026667 278.683512,224.008666 C270.196964,238.663333 227.080238,313.32711 149.333333,448 C71.5864284,313.32711 28.4697022,238.663333 19.9831547,224.008666 C7.25333333,202.026667 2.84217094e-14,176.537017 2.84217094e-14,149.333333 C2.84217094e-14,66.8588107 66.8588107,7.10542736e-15 149.333333,7.10542736e-15 Z M149.333333,85.3333333 C113.987109,85.3333333 85.3333333,113.987109 85.3333333,149.333333 C85.3333333,184.679557 113.987109,213.333333 149.333333,213.333333 C184.679557,213.333333 213.333333,184.679557 213.333333,149.333333 C213.333333,113.987109 184.679557,85.3333333 149.333333,85.3333333 Z"
+                        id="Combined-Shape"
+                    ></path>
+                </g>
+            </g>
+        </g>
+    </svg>
+);
+
+const EmailIcon = ({ fill = "#000000", height = 24, width = 24 }) => (
+    <svg
+        fill={fill}
+        width={width}
+        height={height}
+        viewBox="0 0 1920 1920"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="#000000"
+        strokeWidth="0.019200000000000002"
+        className="h-[6px] w-[6px]"
+    >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path
+                d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
+                fillRule="evenodd"
+            ></path>
+        </g>
+    </svg>
+);
+
 export function Frame1(props) {
-    const { className = "w-[320px] h-[320px] mx-auto flex", onClick, sectionRef } = props;
+    const {
+        className = "w-[320px] h-[320px] mx-auto flex",
+        onClick,
+        number = "+91 12345 79862",
+        email = "example@mail.com",
+        webSite = "www.example.com",
+        address = "Enter your address",
+    } = props;
 
     return (
         <>
-            <div className={`border border-neutral-300 relative ${className}`} ref={sectionRef} onClick={onClick}>
+            <div className={`border border-neutral-300 relative ${className}`} onClick={onClick}>
                 <div className="absolute bottom-0 w-full">
                     <div className="flex flex-row items-center justify-between w-full px-4">
                         <div className="flex flex-row items-center gap-0.5">
                             <span className="border-[0.5px] border-black p-0.5 rounded-full">
+                                <EmailIcon />
+                            </span>
+                            <span className="text-[1.5px] font-bold pt-[1px]">{email}</span>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-0.5">
+                            <span className="border-[0.5px] border-black p-0.5 rounded-full">
                                 <svg
+                                    viewBox="0 0 15 15"
+                                    version="1.1"
+                                    height={6}
+                                    width={6}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlnsXlink="http://www.w3.org/1999/xlink"
                                     fill="#000000"
+                                >
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+                                            <g id="Dribbble-Light-Preview" transform="translate(-103.000000, -7321.000000)" fill="#000000">
+                                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                    <path
+                                                        d="M61.7302966,7173.99596 C61.2672966,7175.40296 59.4532966,7176.10496 58.1572966,7175.98796 C56.3872966,7175.82796 54.4612966,7174.88896 52.9992966,7173.85496 C50.8502966,7172.33496 48.8372966,7169.98396 47.6642966,7167.48896 C46.8352966,7165.72596 46.6492966,7163.55796 47.8822966,7161.95096 C48.3382966,7161.35696 48.8312966,7161.03996 49.5722966,7161.00296 C50.6002966,7160.95296 50.7442966,7161.54096 51.0972966,7162.45696 C51.3602966,7163.14196 51.7112966,7163.84096 51.9072966,7164.55096 C52.2742966,7165.87596 50.9912966,7165.93096 50.8292966,7167.01396 C50.7282966,7167.69696 51.5562966,7168.61296 51.9302966,7169.09996 C52.6632966,7170.05396 53.5442966,7170.87696 54.5382966,7171.50296 C55.1072966,7171.86196 56.0262966,7172.50896 56.6782966,7172.15196 C57.6822966,7171.60196 57.5872966,7169.90896 58.9912966,7170.48196 C59.7182966,7170.77796 60.4222966,7171.20496 61.1162966,7171.57896 C62.1892966,7172.15596 62.1392966,7172.75396 61.7302966,7173.99596 C61.4242966,7174.92396 62.0362966,7173.06796 61.7302966,7173.99596"
+                                                        id="call-[#192]"
+                                                    ></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </span>
+
+                            <div className="text-[1.5px] font-bold pt-[1px]">{number}</div>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-0.5">
+                            <span className="border-[0.5px] border-black p-0.5 rounded-full">
+                                <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
+                            </span>
+
+                            <div className="text-[1.5px] pt-[1px] font-bold">{webSite}</div>
+                        </div>
+                    </div>
+
+                    <div className="flex mx-auto w-full justify-center bg-black text-white mt-1">
+                        <div className="flex flex-row py-[2.5px] items-center">
+                            <div className="bg-white rounded-full p-0.5">
+                                <LocationIcon className="" height={6} width={6} />
+                            </div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">{address}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export function Frame2(props) {
+    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
+
+    return (
+        <>
+            <div className={`border border-neutral-300 relative ${className}`} onClick={onClick}>
+                <div className="absolute bottom-0 w-full">
+                    <div className="flex flex-row items-center justify-between w-full bg-black">
+                        <div className="flex flex-row items-center gap-0.5 pl-1.5">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <svg
+                                    fill="#FFFFFF"
                                     width="64px"
                                     height="64px"
                                     viewBox="0 0 1920 1920"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    stroke="#000000"
-                                    stroke-width="0.019200000000000002"
+                                    stroke="#FFFFFF"
+                                    strokeWidth="0.019200000000000002"
                                     className="h-[6px] w-[6px]"
                                 >
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
+                                            fillRule="evenodd"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span className="text-[1.5px] font-bold pt-[1px] text-white">adarsh_fab132@yahoo.com</span>
+                        </div>
+
+                        <div className="bg-white h-5 w-2" style={{ transform: "skew(16deg)" }} />
+
+                        <div className="flex flex-row items-center gap-0.5">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <WebIcon className="h-[6px] w-[6px]" fill="#FFFFFF" />
+                            </span>
+
+                            <div className="text-[1.5px] pt-[1px] font-bold text-white">www.adarshfabrication.com</div>
+                        </div>
+
+                        <div className="bg-white h-5 w-2" style={{ transform: "skew(16deg)" }} />
+
+                        <div className="flex flex-row items-center gap-0.5 bg-black pr-1.5">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <CallIcon className="h-[6px] w-[6px]" fill="#000000" stroke="#000000" />
+                            </span>
+
+                            <div className="text-[1.5px] font-bold pt-[1px] text-white">+91 98254 48953</div>
+                        </div>
+                    </div>
+
+                    <div className="flex mx-auto w-full justify-center mt-[1px]">
+                        <div className="flex flex-row py-[2.5px] items-center">
+                            <div className="border-[0.5px] border-black rounded-full p-0.5">
+                                <LocationIcon height={6} width={6} />
+                            </div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold text-black">
+                                Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export function Frame3(props) {
+    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
+
+    return (
+        <>
+            <div className={`border border-neutral-300 relative ${className}`} onClick={onClick}>
+                <div className="absolute bottom-0 w-full">
+                    <div className="flex flex-row items-center justify-between w-full">
+                        <div className="flex flex-row items-center gap-0.5 bg-black text-white rounded-r-xl pl-1.5 pr-1.5 py-1">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <svg
+                                    fill="#FFFFFF"
+                                    width="64px"
+                                    height="64px"
+                                    viewBox="0 0 1920 1920"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    stroke="#FFFFFF"
+                                    strokeWidth="0.019200000000000002"
+                                    className="h-[6px] w-[6px]"
+                                >
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
                                         <path
@@ -38,14 +224,37 @@ export function Frame1(props) {
 
                         <div className="flex flex-row items-center gap-0.5">
                             <span className="border-[0.5px] border-black p-0.5 rounded-full">
-                                <CallIcon className="h-[6px] w-[6px]" />
+                                <svg
+                                    viewBox="0 0 15 15"
+                                    version="1.1"
+                                    height={6}
+                                    width={6}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                                    fill="#000000"
+                                >
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+                                            <g id="Dribbble-Light-Preview" transform="translate(-103.000000, -7321.000000)" fill="#000000">
+                                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                    <path
+                                                        d="M61.7302966,7173.99596 C61.2672966,7175.40296 59.4532966,7176.10496 58.1572966,7175.98796 C56.3872966,7175.82796 54.4612966,7174.88896 52.9992966,7173.85496 C50.8502966,7172.33496 48.8372966,7169.98396 47.6642966,7167.48896 C46.8352966,7165.72596 46.6492966,7163.55796 47.8822966,7161.95096 C48.3382966,7161.35696 48.8312966,7161.03996 49.5722966,7161.00296 C50.6002966,7160.95296 50.7442966,7161.54096 51.0972966,7162.45696 C51.3602966,7163.14196 51.7112966,7163.84096 51.9072966,7164.55096 C52.2742966,7165.87596 50.9912966,7165.93096 50.8292966,7167.01396 C50.7282966,7167.69696 51.5562966,7168.61296 51.9302966,7169.09996 C52.6632966,7170.05396 53.5442966,7170.87696 54.5382966,7171.50296 C55.1072966,7171.86196 56.0262966,7172.50896 56.6782966,7172.15196 C57.6822966,7171.60196 57.5872966,7169.90896 58.9912966,7170.48196 C59.7182966,7170.77796 60.4222966,7171.20496 61.1162966,7171.57896 C62.1892966,7172.15596 62.1392966,7172.75396 61.7302966,7173.99596 C61.4242966,7174.92396 62.0362966,7173.06796 61.7302966,7173.99596"
+                                                        id="call-[#192]"
+                                                    ></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
                             </span>
 
                             <div className="text-[1.5px] font-bold pt-[1px]">+91 98254 48953</div>
                         </div>
 
-                        <div className="flex flex-row items-center gap-0.5">
-                            <span className="border-[0.5px] border-black p-0.5 rounded-full">
+                        <div className="flex flex-row items-center gap-0.5 bg-black text-white rounded-l-xl pr-1.5 pl-1 py-1">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
                                 <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
@@ -53,31 +262,12 @@ export function Frame1(props) {
                         </div>
                     </div>
 
-                    <div className="flex mx-auto w-full justify-center bg-black text-white mt-1">
+                    <div className="flex mx-auto w-full justify-center text-black mt-1">
                         <div className="flex flex-row py-[2.5px] items-center">
-                            <div className="bg-white rounded-full p-0.5">
-                                <svg
-                                    width="6px"
-                                    height="6px"
-                                    viewBox="0 0 1024 1024"
-                                    fill="#000000"
-                                    className="icon"
-                                    version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    stroke="#000000"
-                                    stroke-width="30.72"
-                                >
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <path
-                                            d="M512 1012.8c-253.6 0-511.2-54.4-511.2-158.4 0-92.8 198.4-131.2 283.2-143.2h3.2c12 0 22.4 8.8 24 20.8 0.8 6.4-0.8 12.8-4.8 17.6-4 4.8-9.6 8.8-16 9.6-176.8 25.6-242.4 72-242.4 96 0 44.8 180.8 110.4 463.2 110.4s463.2-65.6 463.2-110.4c0-24-66.4-70.4-244.8-96-6.4-0.8-12-4-16-9.6-4-4.8-5.6-11.2-4.8-17.6 1.6-12 12-20.8 24-20.8h3.2c85.6 12 285.6 50.4 285.6 143.2 0.8 103.2-256 158.4-509.6 158.4z m-16.8-169.6c-12-11.2-288.8-272.8-288.8-529.6 0-168 136.8-304.8 304.8-304.8S816 145.6 816 313.6c0 249.6-276.8 517.6-288.8 528.8l-16 16-16-15.2zM512 56.8c-141.6 0-256.8 115.2-256.8 256.8 0 200.8 196 416 256.8 477.6 61.6-63.2 257.6-282.4 257.6-477.6C768.8 172.8 653.6 56.8 512 56.8z m0 392.8c-80 0-144.8-64.8-144.8-144.8S432 160 512 160c80 0 144.8 64.8 144.8 144.8 0 80-64.8 144.8-144.8 144.8zM512 208c-53.6 0-96.8 43.2-96.8 96.8S458.4 401.6 512 401.6c53.6 0 96.8-43.2 96.8-96.8S564.8 208 512 208z"
-                                            fill=""
-                                        ></path>
-                                    </g>
-                                </svg>
+                            <div className="border-black border-[0.5px] rounded-full p-0.5">
+                                <LocationIcon height={6} width={6} />
                             </div>
-                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA</div>{" "}
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA</div>
                         </div>
                     </div>
                 </div>
@@ -86,32 +276,247 @@ export function Frame1(props) {
     );
 }
 
-export function Frame2(props) {
-    const { className } = props;
-
-    return (
-        <>
-            <div className={`border border-neutral-300 ${className}`}>helo</div>
-        </>
-    );
-}
-
-export function Frame3(props) {
-    const { className } = props;
-
-    return (
-        <>
-            <div className={`border border-neutral-300 ${className}`}>helo</div>
-        </>
-    );
-}
-
 export function Frame4(props) {
-    const { className } = props;
+    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
 
     return (
         <>
-            <div className={`border border-neutral-300 ${className}`}>helo</div>
+            <div className={`border border-neutral-300 relative ${className}`} onClick={onClick}>
+                <div className="absolute bottom-0 w-full">
+                    <div className="flex flex-row items-center w-full bg-black text-white py-1">
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 mr-5 pl-4"></div>
+
+                        <div className="bg-white h-5 -my-1 w-2.5 ml-2" style={{ transform: "skew(16deg)" }} />
+
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 ml-5">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
+                            </span>
+
+                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-row items-center w-full bg-black text-white py-1 mt-1">
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 mr-5 pl-4">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <svg
+                                    fill="#FFFFFF"
+                                    width="64px"
+                                    height="64px"
+                                    viewBox="0 0 1920 1920"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    stroke="#FFFFFF"
+                                    strokeWidth="0.019200000000000002"
+                                    className="h-[6px] w-[6px]"
+                                >
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
+                                            fillRule="evenodd"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span className="text-[1.5px] font-bold pt-[1px]">adarsh_fab132@yahoo.com</span>
+                        </div>
+
+                        <div className="bg-white h-5 -my-1 w-2.5 ml-2" style={{ transform: "skew(16deg)" }} />
+
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 ml-5">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <CallIcon className="h-[6px] w-[6px]" fill="#000000" />
+                            </span>
+
+                            <div className="text-[1.5px] font-bold pt-[1px]">+91 98254 48953</div>
+                        </div>
+                    </div>
+
+                    <div className="flex mx-auto w-full justify-center text-black mt-1">
+                        <div className="flex flex-row py-[2.5px] items-center">
+                            <div className="border-black border-[0.5px] rounded-full p-0.5">
+                                <LocationIcon height={6} width={6} />
+                            </div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export function Frame5(props) {
+    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
+
+    return (
+        <>
+            <div className={`border border-neutral-300 relative bg-white ${className}`} onClick={onClick}>
+                <div className="absolute bottom-0 w-full">
+                    <div className="flex flex-row items-center w-full bg-white text-black py-1">
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 mr-5 pl-4">
+                            <span className="border-[0.5px] border-black p-0.5 rounded-full">
+                                <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
+                            </span>
+
+                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 ml-5">
+                            <span className="border-[0.5px] border-black p-0.5 rounded-full">
+                                <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
+                            </span>
+
+                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-row items-center w-full bg-white text-black">
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 mr-5 pl-4">
+                            <span className="border-[0.5px] border-black p-0.5 rounded-full">
+                                <svg
+                                    fill="#000000"
+                                    width="64px"
+                                    height="64px"
+                                    viewBox="0 0 1920 1920"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    stroke="#000000"
+                                    strokeWidth="0.019200000000000002"
+                                    className="h-[6px] w-[6px]"
+                                >
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
+                                            fillRule="evenodd"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span className="text-[1.5px] font-bold pt-[1px]">adarsh_fab132@yahoo.com</span>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 ml-5">
+                            <span className="border-[0.5px] border-black p-0.5 rounded-full">
+                                <svg
+                                    viewBox="0 0 15 15"
+                                    version="1.1"
+                                    height={6}
+                                    width={6}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                                    fill="#000000"
+                                >
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+                                            <g id="Dribbble-Light-Preview" transform="translate(-103.000000, -7321.000000)" fill="#000000">
+                                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                    <path
+                                                        d="M61.7302966,7173.99596 C61.2672966,7175.40296 59.4532966,7176.10496 58.1572966,7175.98796 C56.3872966,7175.82796 54.4612966,7174.88896 52.9992966,7173.85496 C50.8502966,7172.33496 48.8372966,7169.98396 47.6642966,7167.48896 C46.8352966,7165.72596 46.6492966,7163.55796 47.8822966,7161.95096 C48.3382966,7161.35696 48.8312966,7161.03996 49.5722966,7161.00296 C50.6002966,7160.95296 50.7442966,7161.54096 51.0972966,7162.45696 C51.3602966,7163.14196 51.7112966,7163.84096 51.9072966,7164.55096 C52.2742966,7165.87596 50.9912966,7165.93096 50.8292966,7167.01396 C50.7282966,7167.69696 51.5562966,7168.61296 51.9302966,7169.09996 C52.6632966,7170.05396 53.5442966,7170.87696 54.5382966,7171.50296 C55.1072966,7171.86196 56.0262966,7172.50896 56.6782966,7172.15196 C57.6822966,7171.60196 57.5872966,7169.90896 58.9912966,7170.48196 C59.7182966,7170.77796 60.4222966,7171.20496 61.1162966,7171.57896 C62.1892966,7172.15596 62.1392966,7172.75396 61.7302966,7173.99596 C61.4242966,7174.92396 62.0362966,7173.06796 61.7302966,7173.99596"
+                                                        id="call-[#192]"
+                                                    ></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </span>
+
+                            <div className="text-[1.5px] font-bold pt-[1px]">+91 98254 48953</div>
+                        </div>
+                    </div>
+
+                    <div className="flex mx-auto w-full justify-center text-white bg-black mt-1">
+                        <div className="flex flex-row py-[2.5px] items-center">
+                            <div className="border-white border-[0.5px] rounded-full p-0.5">
+                                <LocationIcon fill="#FFFFFF" height={6} width={6} />
+                            </div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export function Frame6(props) {
+    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
+
+    return (
+        <>
+            <div className={`border border-neutral-300 relative bg-white ${className}`} onClick={onClick}>
+                <div className="absolute bottom-0 w-full">
+                    <div className="flex flex-row items-center w-full py-1 gap-2">
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 pl-4 bg-black text-white py-1 rounded-r-xl">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <WebIcon className="h-[6px] w-[6px]" fill="#FFFFFF" />
+                            </span>
+
+                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 bg-black pl-2 text-white py-1 rounded-l-xl">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
+                            </span>
+
+                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-row items-center w-full gap-2">
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 pl-4 bg-black text-white py-1 rounded-r-xl">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <svg
+                                    fill="#FFFFFF"
+                                    width="64px"
+                                    height="64px"
+                                    viewBox="0 0 1920 1920"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    stroke="#FFFFFF"
+                                    strokeWidth="0.019200000000000002"
+                                    className="h-[6px] w-[6px]"
+                                >
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
+                                            fillRule="evenodd"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span className="text-[1.5px] font-bold pt-[1px]">adarsh_fab132@yahoo.com</span>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 bg-black pl-2 text-white py-1 rounded-l-xl">
+                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                <CallIcon className="h-[6px] w-[6px]" fill="#000000" stroke="#000000" />
+                            </span>
+
+                            <div className="text-[1.5px] font-bold pt-[1px]">+91 98254 48953</div>
+                        </div>
+                    </div>
+
+                    <div className="flex mx-auto w-full justify-center mt-[1px]">
+                        <div className="flex flex-row py-[2.5px] items-center">
+                            <div className="border-[0.5px] border-black rounded-full p-0.5">
+                                <LocationIcon height={6} width={6} />
+                            </div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold text-black">
+                                Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
